@@ -128,13 +128,21 @@ export default function RootLayout() {
                     <h1>UBIQUITIOUS STORE</h1>
                     <NavLink to={"/home"}>Home</NavLink>
                     <NavLink to={"/shop"}>Shop</NavLink>
-                    <button
-                        onClick={() => {
-                            setCheckout(!checkout)
-                        }}
-                    >
-                        checkout btn
-                    </button>
+                    <div className={RootLayoutSCSS.shoppingBagContainer}>
+                        <div className={RootLayoutSCSS.ItemCountContainer}>
+                            <div className={RootLayoutSCSS.square}>
+                                <div className={RootLayoutSCSS.itemCount}>
+                                    {counter}
+                                </div>
+                                <div className={RootLayoutSCSS.triangle}></div>
+                            </div>
+                        </div>
+                        <button
+                            onClick={() => {
+                                setCheckout(!checkout)
+                            }}
+                        ></button>
+                    </div>
                 </nav>
             </header>
 
