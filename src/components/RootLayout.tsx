@@ -39,7 +39,7 @@ export default function RootLayout() {
         ;(async function getShopProductData() {
             try {
                 const result = await fetch(
-                    "https://fakestoreapi.com/products?limit=100",
+                    "https://fakestoreapi.com/products?limit=10",
                     { mode: "cors" }
                 )
                 const json = await result.json()

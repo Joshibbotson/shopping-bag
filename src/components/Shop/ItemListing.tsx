@@ -1,4 +1,6 @@
 import shopSCSS from "./Shop.module.scss"
+import { Link, useParams } from "react-router-dom"
+import ItemPage from "./clickThroughPage/ItemPage"
 
 interface Props {
     title: string
@@ -18,6 +20,8 @@ export default function itemListing({ title, imageUrl, price, id }: Props) {
         backgroundImage: `url(${imageUrl})`,
     }
 
+    const { itemId } = useParams()
+
     return (
         <div className={shopSCSS.itemListing}>
             <div className={shopSCSS.img} style={backgroundImageStyle}></div>
@@ -26,13 +30,9 @@ export default function itemListing({ title, imageUrl, price, id }: Props) {
             <div className={shopSCSS.bottomContainer}>
                 <h1>{title}</h1>
                 <h5>£{price}</h5>
-                <button
-                // onClick={() => {
-                //     return addItemToBag(title, imageUrl, price, id)
-                // }}
-                >
-                    Add to bag
-                </button>
+                <Link to={`/shop/${itemId}`} relative="path">
+                    add
+                </Link>
             </div>
         </div>
     )
