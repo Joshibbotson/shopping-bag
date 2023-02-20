@@ -1,6 +1,5 @@
-import shopSCSS from "./Shop.module.scss"
+import shopSCSS from "../styles/Shop.module.scss"
 import { Link, useParams } from "react-router-dom"
-import ItemPage from "./clickThroughPage/ItemPage"
 
 interface Props {
     title: string

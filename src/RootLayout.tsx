@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
-import CheckoutItem from "./Shop/CheckoutItem/CheckoutItem"
+import CheckoutItem from "./Shop/components/CheckoutItem"
 // import uniqid from "uniqid"
 
 type ShopProductDataType = Record<string, any> | null
@@ -16,18 +16,22 @@ export type AddItemToBagType = (
 export default function RootLayout() {
     const [shopProductData, setShopProductData] =
         useState<ShopProductDataType>(null)
-    const [counter, setCounter] = useState<number>(8)
+    const [counter, setCounter] = useState<number>(1)
     const [bagContents, setBagContents] = useState<Array<any>>([
         {
             title: "test title",
+            imageUrl: "",
             price: 23.3,
             amount: 1,
+            sumPrice: 23.3,
             id: 6,
         },
         {
             title: "new title",
+            imageUrl: "",
             price: 45.3,
             amount: 2,
+            sumPrice: 45.3,
             id: 7,
         },
     ])
@@ -170,6 +174,8 @@ export default function RootLayout() {
                                 title={item.title}
                                 price={item.price}
                                 amount={item.amount}
+                                sumPrice={item.sumPrice}
+                                imageUrl={item.imageUrl}
                                 id={item.id}
                                 decrementAmount={decrementAmount}
                                 incrementAmount={incrementAmount}
@@ -189,7 +195,12 @@ export default function RootLayout() {
                 </main>
             ) : (
                 <main>
-                    <div className={RootLayoutSCSS.hideBag}></div>
+                    <div
+                        className={`${RootLayoutSCSS.backDrop} ${RootLayoutSCSS.hide}`}
+                    ></div>
+                    <div
+                        className={`${RootLayoutSCSS.showBag} ${RootLayoutSCSS.hideBag}`}
+                    ></div>
                     <Outlet context={shopProductData} />
                 </main>
             )}

@@ -1,8 +1,8 @@
-import { useShopProductData } from "../RootLayout"
+import { useShopProductData } from "../../RootLayout"
 // import { useAddItemToBag } from "../RootLayout"
-import Loading from "../Loading/Loading"
-import ItemListing from "./ItemListing"
-import shopSCSS from "./Shop.module.scss"
+import Loading from "../../Loading/Loading"
+import ItemListing from "../components/ItemListing"
+import shopSCSS from "../styles/Shop.module.scss"
 
 interface Product {
     id: number

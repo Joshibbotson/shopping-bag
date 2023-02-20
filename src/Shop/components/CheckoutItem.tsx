@@ -1,10 +1,12 @@
-import checkoutItemSCSS from "./CheckoutItem.module.scss"
+import checkoutItemSCSS from "../styles/CheckoutItem.module.scss"
 
 interface Props {
     title: string
     price: number
     amount: number
+    sumPrice: number
     id: number
+    imageUrl: string
     decrementAmount: (value: number) => void
     incrementAmount: (value: number) => void
 }
@@ -13,14 +15,19 @@ export default function CheckoutItem({
     title,
     price,
     amount,
+    sumPrice,
     id,
+    imageUrl,
     decrementAmount,
     incrementAmount,
 }: Props) {
+    const backgroundImageStyle = {
+        backgroundImage: `url(${imageUrl})`,
+    }
     return (
         <div className={checkoutItemSCSS.checkoutItemContainer}>
             <h1> {title} </h1>
-            <p>{price}</p>
+            <p>{sumPrice}</p>
             <div className={checkoutItemSCSS.amountContainer}>
                 <button
                     onClick={() => {

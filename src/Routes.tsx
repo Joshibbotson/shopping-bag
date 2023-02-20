@@ -1,13 +1,13 @@
-import Home from "./components/Home/Home"
-import Shop from "./components/Shop/Shop"
-import RootLayout from "./components/RootLayout"
+import Home from "./Home/Home"
+import Shop from "./Shop/pages/ShopPage"
+import RootLayout from "./RootLayout"
 
 import {
     createBrowserRouter,
     createRoutesFromElements,
     Route,
 } from "react-router-dom"
-import ItemPage from "./components/Shop/clickThroughPage/ItemPage"
+import ItemPage from "./Shop/pages/ItemPage"
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
