@@ -16,7 +16,7 @@ export type AddItemToBagType = (
 export default function RootLayout() {
     const [shopProductData, setShopProductData] =
         useState<ShopProductDataType>(null)
-    const [counter, setCounter] = useState<number>(0)
+    const [counter, setCounter] = useState<number>(8)
     const [bagContents, setBagContents] = useState<Array<any>>([
         {
             title: "test title",
@@ -128,21 +128,30 @@ export default function RootLayout() {
                     <h1>UBIQUITIOUS STORE</h1>
                     <NavLink to={"/home"}>Home</NavLink>
                     <NavLink to={"/shop"}>Shop</NavLink>
-                    <div className={RootLayoutSCSS.shoppingBagContainer}>
-                        <div className={RootLayoutSCSS.ItemCountContainer}>
-                            <div className={RootLayoutSCSS.square}>
-                                <div className={RootLayoutSCSS.itemCount}>
-                                    {counter}
+
+                    {counter ? (
+                        <div className={RootLayoutSCSS.shoppingBagContainer}>
+                            <div className={RootLayoutSCSS.ItemCountContainer}>
+                                <div className={RootLayoutSCSS.square}>
+                                    <div className={RootLayoutSCSS.itemCount}>
+                                        {counter > 99 ? "99+" : counter}
+                                    </div>
                                 </div>
                                 <div className={RootLayoutSCSS.triangle}></div>
                             </div>
+                            <button
+                                onClick={() => {
+                                    setCheckout(!checkout)
+                                }}
+                            ></button>
                         </div>
+                    ) : (
                         <button
                             onClick={() => {
                                 setCheckout(!checkout)
                             }}
                         ></button>
-                    </div>
+                    )}
                 </nav>
             </header>
 
