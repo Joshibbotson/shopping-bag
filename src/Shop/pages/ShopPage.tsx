@@ -3,6 +3,7 @@ import { useShopProductData } from "../../RootLayout"
 import Loading from "../../Loading/Loading"
 import ItemListing from "../components/ItemListing"
 import shopSCSS from "../styles/Shop.module.scss"
+import { Outlet } from "react-router-dom"
 
 interface Product {
     id: number
@@ -37,6 +38,7 @@ export default function Shop() {
                                 />
                             )
                         })}
+                        <Outlet />
                     </div>
                 </section>
             ) : (

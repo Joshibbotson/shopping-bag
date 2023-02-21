@@ -19,8 +19,6 @@ export default function itemListing({ title, imageUrl, price, id }: Props) {
         backgroundImage: `url(${imageUrl})`,
     }
 
-    const { itemId } = useParams()
-
     return (
         <div className={shopSCSS.itemListing}>
             <div className={shopSCSS.img} style={backgroundImageStyle}></div>
@@ -29,9 +27,8 @@ export default function itemListing({ title, imageUrl, price, id }: Props) {
             <div className={shopSCSS.bottomContainer}>
                 <h1>{title}</h1>
                 <h5>£{price}</h5>
-                <Link to={`/shop/${itemId}`} relative="path">
-                    add
-                </Link>
+
+                <Link to={`${id}`}>add</Link>
             </div>
         </div>
     )

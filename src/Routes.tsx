@@ -1,4 +1,4 @@
-import Home from "./Home/Home"
+import Home from "./Home/HomePage"
 import Shop from "./Shop/pages/ShopPage"
 import RootLayout from "./RootLayout"
 
@@ -15,7 +15,7 @@ export const router = createBrowserRouter(
             <Route path="/" element={<RootLayout />}>
                 <Route index path="home" element={<Home />} />
                 <Route path="shop" element={<Shop />}>
-                    <Route path=".." element={<ItemPage />} />
+                    <Route path=":productId" element={<ItemPage />} />
                 </Route>
             </Route>
         </Route>
