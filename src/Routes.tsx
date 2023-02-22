@@ -7,7 +7,7 @@ import {
     createRoutesFromElements,
     Route,
 } from "react-router-dom"
-import ItemPage from "./Shop/pages/ItemPage"
+import ProductPage from "./Shop/pages/ProductPage"
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,7 +15,7 @@ export const router = createBrowserRouter(
             <Route path="/" element={<RootLayout />}>
                 <Route index path="home" element={<Home />} />
                 <Route path="shop" element={<Shop />}>
-                    <Route path=":productId" element={<ItemPage />} />
+                    <Route path=":productId" element={<ProductPage />} />
                 </Route>
             </Route>
         </Route>

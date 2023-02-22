@@ -3,7 +3,8 @@ import { useShopProductData } from "../../RootLayout"
 import Loading from "../../Loading/Loading"
 import ItemListing from "../components/ItemListing"
 import shopSCSS from "../styles/Shop.module.scss"
-import { Outlet } from "react-router-dom"
+import { Outlet, useOutletContext } from "react-router-dom"
+import { useState } from "react"
 
 interface Product {
     id: number
@@ -18,9 +19,12 @@ interface Product {
     // ) => void
 }
 
+type ShowProductType = object
+
 export default function Shop() {
     const data: any | null = useShopProductData()
     // const addItemToBag = useAddItemToBag()
+
     return (
         <>
             {data ? (
@@ -38,7 +42,6 @@ export default function Shop() {
                                 />
                             )
                         })}
-                        <Outlet />
                     </div>
                 </section>
             ) : (

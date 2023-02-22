@@ -6,6 +6,7 @@ interface Props {
     imageUrl: string
     price: number
     id: number
+
     // addItemToBag: (
     //     title: string,
     //     imageUrl: string,

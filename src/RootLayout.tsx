@@ -16,7 +16,8 @@ export type AddItemToBagType = (
 export default function RootLayout() {
     const [shopProductData, setShopProductData] =
         useState<ShopProductDataType>(null)
-    const [counter, setCounter] = useState<number>(1)
+    const [showProduct, setShowProduct] = useState<boolean>(false)
+    const [counter, setCounter] = useState<number>(100)
     const [bagContents, setBagContents] = useState<Array<any>>([
         {
             title: "test title",
@@ -96,6 +97,11 @@ export default function RootLayout() {
         )
     }
 
+    function updateShowProduct() {
+        setShowProduct(!showProduct)
+        console.log(showProduct)
+    }
+
     const addItemToBag = (
         title: string,
         imageUrl: string,
@@ -169,6 +175,19 @@ export default function RootLayout() {
                         }}
                     ></div>
                     <div className={RootLayoutSCSS.showBag}>
+                        <button
+                            onClick={() => {
+                                setCheckout(!checkout)
+                            }}
+                            className={RootLayoutSCSS.closeBtn}
+                        >
+                            X
+                        </button>
+                        <div className={RootLayoutSCSS.bagTitleWrapper}>
+                            <h2 className={RootLayoutSCSS.bagTitle}>
+                                MY SHOPPING BAG
+                            </h2>
+                        </div>
                         {bagContents.map(item => (
                             <CheckoutItem
                                 title={item.title}
@@ -182,14 +201,6 @@ export default function RootLayout() {
                                 key={item.id}
                             />
                         ))}
-
-                        <button
-                            onClick={() => {
-                                setCheckout(!checkout)
-                            }}
-                        >
-                            Close
-                        </button>
                     </div>
                     <Outlet context={shopProductData} />
                 </main>
