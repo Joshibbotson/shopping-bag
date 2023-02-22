@@ -7,14 +7,17 @@ body {
     font-family: $font;
 
     header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 1rem;
             gap: 1rem;
-            margin-left: 1.5rem;
-            margin-right: 1.5rem;
+
+            width: auto;
 
             h1 {
                 font-size: 1rem;
@@ -164,8 +167,7 @@ body {
     body {
         header {
             nav {
-                margin-left: 7.5%;
-                margin-right: 7.5%;
+                width: 33rem;
                 h1 {
                     font-size: 1rem;
                     margin-right: auto;
@@ -187,8 +189,7 @@ body {
     body {
         header {
             nav {
-                margin-left: 7.5%;
-                margin-right: 7.5%;
+                width: 53rem;
 
                 h1 {
                     font-size: 1.5rem;
@@ -212,8 +213,7 @@ body {
     body {
         header {
             nav {
-                margin-left: 7.5%;
-                margin-right: 7.5%;
+                width: 71.5rem;
 
                 h1 {
                     font-size: 1.5rem;
