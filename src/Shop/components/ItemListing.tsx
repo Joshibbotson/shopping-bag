@@ -6,6 +6,8 @@ interface Props {
     imageUrl: string
     price: number
     id: number
+    showProduct: boolean
+    setShowProduct: (arg0: boolean) => void
 
     // addItemToBag: (
     //     title: string,
@@ -15,21 +17,36 @@ interface Props {
     // ) => void
 }
 
-export default function itemListing({ title, imageUrl, price, id }: Props) {
+export default function itemListing({
+    title,
+    imageUrl,
+    price,
+    id,
+    showProduct,
+    setShowProduct,
+}: Props) {
     const backgroundImageStyle = {
         backgroundImage: `url(${imageUrl})`,
     }
 
     return (
         <div className={shopSCSS.itemListing}>
-            <div className={shopSCSS.img} style={backgroundImageStyle}></div>
+            <Link
+                to={`${id}`}
+                onClick={() => {
+                    setShowProduct(!showProduct)
+                }}
+            >
+                <div
+                    className={shopSCSS.img}
+                    style={backgroundImageStyle}
+                ></div>
+            </Link>
             <hr />
 
             <div className={shopSCSS.bottomContainer}>
                 <h1>{title}</h1>
                 <h5>£{price}</h5>
-
-                <Link to={`${id}`}>add</Link>
             </div>
         </div>
     )

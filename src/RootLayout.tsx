@@ -16,7 +16,6 @@ export type AddItemToBagType = (
 export default function RootLayout() {
     const [shopProductData, setShopProductData] =
         useState<ShopProductDataType>(null)
-    const [showProduct, setShowProduct] = useState<boolean>(false)
     const [counter, setCounter] = useState<number>(100)
     const [bagContents, setBagContents] = useState<Array<any>>([
         {
@@ -44,7 +43,7 @@ export default function RootLayout() {
         ;(async function getShopProductData() {
             try {
                 const result = await fetch(
-                    "https://fakestoreapi.com/products?limit=10",
+                    "https://fakestoreapi.com/products?limit=12",
                     { mode: "cors" }
                 )
                 const json = await result.json()
@@ -95,11 +94,6 @@ export default function RootLayout() {
                 return item.id !== id
             })
         )
-    }
-
-    function updateShowProduct() {
-        setShowProduct(!showProduct)
-        console.log(showProduct)
     }
 
     const addItemToBag = (
