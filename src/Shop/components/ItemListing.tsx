@@ -1,5 +1,5 @@
 import shopSCSS from "../styles/Shop.module.scss"
-import { Link, useParams } from "react-router-dom"
+import { Link, Outlet, useParams } from "react-router-dom"
 
 interface Props {
     title: string

@@ -2,6 +2,8 @@ import { NavLink, Outlet, useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
 import CheckoutItem from "./Shop/components/CheckoutItem"
+import Home from "./Home/HomePage"
+
 // import uniqid from "uniqid"
 
 type ShopProductDataType = Record<string, any> | null
@@ -130,9 +132,9 @@ export default function RootLayout() {
             <header>
                 <nav>
                     <h1>UBIQUITIOUS STORE</h1>
-                    <NavLink to={"/home"}>Home</NavLink>
+                    <NavLink to={"/"}>Home</NavLink>
                     <NavLink to={"/shop"}>Shop</NavLink>
-
+                    {/* check if checkout bag item amount should be displayed */}
                     {counter ? (
                         <div className={RootLayoutSCSS.shoppingBagContainer}>
                             <div className={RootLayoutSCSS.ItemCountContainer}>

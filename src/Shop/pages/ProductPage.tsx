@@ -1,14 +1,23 @@
-import { useOutletContext, useParams } from "react-router-dom"
+import { Link, useOutletContext, useParams } from "react-router-dom"
 
 export default function ProductPage() {
     const { productId } = useParams()
-    // const showProductArr = useOutletContext()
+    const showProduct = useOutletContext()
 
     console.log(productId)
+    console.log(showProduct)
+
     return (
         <>
             item {productId}
-            <button onClick={() => {}}>S H O P</button>
+            <Link
+                to={"/shop"}
+                onClick={() => {
+                    showProduct.setShowProduct(false)
+                }}
+            >
+                S H O P
+            </Link>
         </>
     )
 }
