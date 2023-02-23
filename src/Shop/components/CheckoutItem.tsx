@@ -27,7 +27,7 @@ export default function CheckoutItem({
     return (
         <div className={checkoutItemSCSS.checkoutItemContainer}>
             <h1> {title} </h1>
-            <p>{sumPrice}</p>
+            <p>£{sumPrice}</p>
             <div className={checkoutItemSCSS.amountContainer}>
                 <button
                     onClick={() => {

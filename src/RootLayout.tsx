@@ -2,41 +2,15 @@ import { NavLink, Outlet, useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
 import CheckoutItem from "./Shop/components/CheckoutItem"
-import Home from "./Home/HomePage"
-
-// import uniqid from "uniqid"
 
 type ShopProductDataType = Record<string, any> | null
-
-export type AddItemToBagType = (
-    title: string,
-    imageUrl: string,
-    price: number,
-    id: number
-) => void
 
 export default function RootLayout() {
     const [shopProductData, setShopProductData] =
         useState<ShopProductDataType>(null)
-    const [counter, setCounter] = useState<number>(100)
-    const [bagContents, setBagContents] = useState<Array<any>>([
-        {
-            title: "test title",
-            imageUrl: "",
-            price: 23.3,
-            amount: 1,
-            sumPrice: 23.3,
-            id: 6,
-        },
-        {
-            title: "new title",
-            imageUrl: "",
-            price: 45.3,
-            amount: 2,
-            sumPrice: 45.3,
-            id: 7,
-        },
-    ])
+    const [bagContents, setBagContents] = useState<Array<any>>([])
+    const [counter, setCounter] = useState<number>(0)
+    const [totalCost, setTotalCost] = useState<number>(0)
 
     //Determine if checkout bag should be shown or not//
     const [checkout, setCheckout] = useState<boolean>(false)
@@ -62,10 +36,13 @@ export default function RootLayout() {
             bagContents.map(item => {
                 if (item.id === id) {
                     item.amount += 1
+                    item.sumPrice += item.price
                 }
                 return item
             })
         )
+        console.log(bagContents)
+        setCounter(counter + 1)
     }
 
     const decrementAmount = (id: number) => {
@@ -74,6 +51,7 @@ export default function RootLayout() {
                 if (item.id === id) {
                     if (item.amount > 0) {
                         item.amount -= 1
+                        item.sumPrice -= item.price
                     }
                 }
                 return item
@@ -88,6 +66,8 @@ export default function RootLayout() {
             }
         })
         console.log(shopProductData)
+        console.log(bagContents)
+        setCounter(counter - 1)
     }
 
     const deleteCheckoutItem = (id: number) => {
@@ -96,6 +76,8 @@ export default function RootLayout() {
                 return item.id !== id
             })
         )
+        console.log(bagContents)
+        setCounter(counter - 1)
     }
 
     const addItemToBag = (
@@ -104,27 +86,39 @@ export default function RootLayout() {
         price: string,
         id: number
     ) => {
+        const isItemInBag = bagContents.some(item => item.id === id)
+
         //check bag contents for id, if it exists increment amount + price//
-        setBagContents(
-            bagContents.map(item => {
-                if (item.id === id) {
-                    item.amount += 1
-                    item.sumPrice += item.price
-                }
-                return item
-            })
-        )
-        //else if doesn't exist create it//
-        setBagContents([
-            ...bagContents,
-            {
-                title: title,
-                imageUrl: imageUrl,
-                price: price,
-                sumPrice: price,
-                amount: 1,
-            },
-        ])
+        if (isItemInBag) {
+            setBagContents(
+                bagContents.map(item => {
+                    if (item.id === id) {
+                        item.amount += 1
+                        item.sumPrice += item.price
+                        return item
+                    } else {
+                        return item
+                    }
+                })
+            )
+            setCounter(counter + 1)
+        } //if doesn't exist create it//
+        else {
+            setBagContents([
+                ...bagContents,
+                {
+                    title: title,
+                    imageUrl: imageUrl,
+                    price: price,
+                    sumPrice: price,
+                    amount: 1,
+                    id: id,
+                },
+            ])
+        }
+
+        console.log(bagContents)
+        setCounter(counter + 1)
     }
 
     return (
@@ -197,8 +191,9 @@ export default function RootLayout() {
                                 key={item.id}
                             />
                         ))}
+                        <h2>£{totalCost}</h2>
                     </div>
-                    <Outlet context={shopProductData} />
+                    <Outlet context={{ shopProductData, addItemToBag }} />
                 </main>
             ) : (
                 <main>
@@ -208,17 +203,9 @@ export default function RootLayout() {
                     <div
                         className={`${RootLayoutSCSS.showBag} ${RootLayoutSCSS.hideBag}`}
                     ></div>
-                    <Outlet context={shopProductData} />
+                    <Outlet context={{ shopProductData, addItemToBag }} />
                 </main>
             )}
         </>
     )
 }
-
-export function useShopProductData() {
-    return useOutletContext<ShopProductDataType>()
-}
-
-// export function useAddItemToBag() {
-//     return useOutletContext<AddItemToBagType>()
-// }

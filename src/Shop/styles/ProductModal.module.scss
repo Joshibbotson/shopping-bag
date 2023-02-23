@@ -33,6 +33,14 @@
     overflow-y: scroll;
     margin-right: 0;
     transition: all 250ms;
+
+    .img {
+        width: 6rem;
+        height: 6rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 }
 
 .showBag.hideBag {

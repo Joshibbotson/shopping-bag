@@ -1,5 +1,3 @@
-import { useShopProductData } from "../../RootLayout"
-// import { useAddItemToBag } from "../RootLayout"
 import Loading from "../../Loading/Loading"
 import ItemListing from "../components/ItemListing"
 import shopSCSS from "../styles/Shop.module.scss"
@@ -8,24 +6,29 @@ import { Outlet, useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 interface Product {
-    id: number
     title: string
     image: string
     price: number
-    // addItemToBag: (
-    //     title: string,
-    //     imageUrl: string,
-    //     price: number,
-    //     id: number
-    // ) => void
+    sumPrice: number
+    id: number
 }
 
-type ShowProductType = object
+interface OutletContextType {
+    shopProductData: Record<string, any> | null
+    addItemToBag: (
+        title: string,
+        imageUrl: string,
+        price: number,
+        id: number
+    ) => void
+}
 
 export default function Shop() {
     const [showProduct, setShowProduct] = useState<boolean>(false)
 
-    const data: any | null = useShopProductData()
+    const data: OutletContextType = useOutletContext()
+    const { shopProductData } = data
+    const { addItemToBag } = data
 
     // adjust showProduct based on siteUrl//
     useEffect(() => {
@@ -47,23 +50,23 @@ export default function Shop() {
         currentUrl === `http://${siteUrl}/shop` ? setShowProduct(false) : ""
 
         const checkForProductPage = (url: string | undefined) => {
-            for (let i = 0; i < data.length; i++) {
+            for (let i = 0; i < shopProductData!.length; i++) {
                 if (currentUrl === `http://${url}/shop/${i}`) {
                     setShowProduct(true)
                 }
             }
         }
 
-        data ? checkForProductPage(siteUrl) : ""
-    }, [window.location.href, data])
+        shopProductData ? checkForProductPage(siteUrl) : ""
+    }, [window.location.href, shopProductData])
 
     return (
         <>
-            {data ? (
+            {shopProductData ? (
                 <>
                     <section>
                         <div className={shopSCSS.gridLayout}>
-                            {data.map((item: Product) => {
+                            {shopProductData.map((item: Product) => {
                                 return (
                                     <ItemListing
                                         title={item.title}
@@ -73,7 +76,6 @@ export default function Shop() {
                                         id={item.id}
                                         showProduct={showProduct}
                                         setShowProduct={setShowProduct}
-                                        // addItemToBag={addItemToBag}
                                     />
                                 )
                             })}
@@ -88,6 +90,8 @@ export default function Shop() {
                                         context={{
                                             showProduct,
                                             setShowProduct,
+                                            addItemToBag,
+                                            shopProductData,
                                         }}
                                     />
                                 </div>
