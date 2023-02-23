@@ -31,6 +31,21 @@ export default function RootLayout() {
         })()
     }, [])
 
+    //Ensure amount of items and totalCost is updated//
+    useEffect(() => {
+        setCounter(
+            bagContents.reduce((accumulator, currentItem) => {
+                return (accumulator += currentItem.amount)
+            }, 0)
+        )
+
+        setTotalCost(
+            bagContents.reduce((accumulator, currentItem) => {
+                return (accumulator += currentItem.sumPrice)
+            }, 0)
+        )
+    }, [bagContents, counter])
+
     const incrementAmount = (id: number) => {
         setBagContents(
             bagContents.map(item => {
@@ -41,8 +56,6 @@ export default function RootLayout() {
                 return item
             })
         )
-        console.log(bagContents)
-        setCounter(counter + 1)
     }
 
     const decrementAmount = (id: number) => {
@@ -65,9 +78,6 @@ export default function RootLayout() {
                 }
             }
         })
-        console.log(shopProductData)
-        console.log(bagContents)
-        setCounter(counter - 1)
     }
 
     const deleteCheckoutItem = (id: number) => {
@@ -76,8 +86,6 @@ export default function RootLayout() {
                 return item.id !== id
             })
         )
-        console.log(bagContents)
-        setCounter(counter - 1)
     }
 
     const addItemToBag = (
@@ -101,7 +109,6 @@ export default function RootLayout() {
                     }
                 })
             )
-            setCounter(counter + 1)
         } //if doesn't exist create it//
         else {
             setBagContents([
@@ -116,9 +123,6 @@ export default function RootLayout() {
                 },
             ])
         }
-
-        console.log(bagContents)
-        setCounter(counter + 1)
     }
 
     return (
