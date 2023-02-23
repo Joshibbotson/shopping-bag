@@ -2,6 +2,7 @@ import { NavLink, Outlet, useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
 import CheckoutItem from "./Shop/components/CheckoutItem"
+import intToCurrency from "./UtilFunctions/IntToCurrency"
 
 type ShopProductDataType = Record<string, any> | null
 
@@ -195,7 +196,7 @@ export default function RootLayout() {
                                 key={item.id}
                             />
                         ))}
-                        <h2>£{totalCost}</h2>
+                        <h2>{intToCurrency(totalCost)}</h2>
                     </div>
                     <Outlet context={{ shopProductData, addItemToBag }} />
                 </main>

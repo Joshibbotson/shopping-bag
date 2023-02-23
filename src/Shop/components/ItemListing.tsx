@@ -1,5 +1,6 @@
 import shopSCSS from "../styles/Shop.module.scss"
 import { Link, Outlet, useParams } from "react-router-dom"
+import intToCurrency from "../../UtilFunctions/IntToCurrency"
 
 interface Props {
     title: string
@@ -46,7 +47,7 @@ export default function itemListing({
 
             <div className={shopSCSS.bottomContainer}>
                 <h1>{title}</h1>
-                <h5>£{price}</h5>
+                <h5>{intToCurrency(price)}</h5>
             </div>
         </div>
     )
