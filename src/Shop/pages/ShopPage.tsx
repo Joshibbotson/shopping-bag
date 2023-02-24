@@ -93,7 +93,7 @@ export default function Shop() {
             {/* Ensure json data has been fetched before trying to load item listings */}
             {shopProductData ? (
                 <>
-                    <section>
+                    <section className={shopSCSS.shopSection}>
                         <div className={shopSCSS.gridLayout}>
                             {shopProductData.map((item: Product) => {
                                 return (

@@ -1,7 +1,7 @@
 import { Link, useOutletContext, useParams } from "react-router-dom"
 import productModalSCSS from "../styles/ProductModal.module.scss"
+import intToCurrency from "../../UtilFunctions/IntToCurrency"
 
-import { useEffect } from "react"
 import BagIcon from "../components/BagIcon"
 
 interface Product {
@@ -51,12 +51,7 @@ export default function ProductPage() {
     return (
         <>
             <section className={productModalSCSS.productContainer}>
-                <div className={productModalSCSS.innerProductContainer}>
-                    <h1>{targetData[0].title}</h1>
-                    <div
-                        className={productModalSCSS.img}
-                        style={backgroundImageStyle}
-                    ></div>
+                <div className={productModalSCSS.exitLinkWrapper}>
                     <Link
                         to={"/shop"}
                         onClick={() => {
@@ -64,29 +59,50 @@ export default function ProductPage() {
                             setCheckout(false)
                         }}
                     >
-                        S H O P
+                        X
                     </Link>
-                    <button
-                        onClick={() => {
-                            addItemToBag(
-                                targetData[0].title,
-                                targetData[0].image,
-                                targetData[0].price,
-                                targetData[0].id
-                            )
-                        }}
-                    >
-                        add to bag
-                    </button>
+                </div>
+
+                <div className={productModalSCSS.innerProductContainer}>
+                    <div
+                        className={productModalSCSS.img}
+                        style={backgroundImageStyle}
+                    ></div>
                 </div>
             </section>
-            <div>
-                <BagIcon
-                    counter={counter}
-                    checkout={checkout}
-                    setCheckout={setCheckout}
-                />
-            </div>
+            <section className={productModalSCSS.rightSection}>
+                <h1>{targetData[0].title}</h1>
+                <h1>{intToCurrency(targetData[0].price)}</h1>
+
+                <button
+                    onClick={() => {
+                        addItemToBag(
+                            targetData[0].title,
+                            targetData[0].image,
+                            targetData[0].price,
+                            targetData[0].id
+                        )
+                    }}
+                >
+                    Add To Bag
+                </button>
+                <div className={productModalSCSS.linkContainer}>
+                    {/* <Link
+                        to={"/shop"}
+                        onClick={() => {
+                            setShowProduct(false)
+                            setCheckout(false)
+                        }}
+                    >
+                        Back To Shop
+                    </Link> */}
+                    <BagIcon
+                        counter={counter}
+                        checkout={checkout}
+                        setCheckout={setCheckout}
+                    />
+                </div>
+            </section>
         </>
     )
 }

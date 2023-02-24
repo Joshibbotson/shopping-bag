@@ -1,7 +1,7 @@
 $font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 $borderColour: rgb(233, 233, 233);
-section {
+.shopSection {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@ section {
 }
 
 @media (min-width: 570px) {
-    section {
+    .shopSection {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,7 +81,7 @@ section {
 }
 
 @media (min-width: 890px) {
-    section {
+    .shopSection {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -97,7 +97,7 @@ section {
 }
 //Desktop screen//
 @media (min-width: 1300px) {
-    section {
+    .shopSection {
         display: flex;
         justify-content: center;
         align-items: center;

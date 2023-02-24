@@ -28,11 +28,13 @@ export default function BagIcon({ counter, checkout, setCheckout }: Props) {
             ></img>
         </div>
     ) : (
-        <img
-            src={bagPNG}
-            onClick={() => {
-                setCheckout(!checkout)
-            }}
-        ></img>
+        <div className={BagIconSCSS.shoppingBagContainer}>
+            <img
+                src={bagPNG}
+                onClick={() => {
+                    setCheckout(!checkout)
+                }}
+            ></img>
+        </div>
     )
 }
