@@ -23,11 +23,16 @@ export default function itemListing({
         backgroundImage: `url(${imageUrl})`,
     }
 
+    const storeUserYOffset = () => {
+        console.log(window.pageYOffset)
+    }
+
     return (
         <div className={shopSCSS.itemListing}>
             <Link
                 to={`${id}`}
                 onClick={() => {
+                    storeUserYOffset()
                     setShowProduct(!showProduct)
                 }}
             >

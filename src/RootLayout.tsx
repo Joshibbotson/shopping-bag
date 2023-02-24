@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
 import CheckoutItem from "./Shop/components/CheckoutItem"
 import intToCurrency from "./UtilFunctions/IntToCurrency"
+import BagIcon from "./Shop/components/BagIcon"
 
 type ShopProductDataType = Record<string, any> | null
 
@@ -15,6 +16,8 @@ export default function RootLayout() {
 
     //Determine if checkout bag should be shown or not//
     const [checkout, setCheckout] = useState<boolean>(false)
+    //Determine whether product page should be displayed
+    const [showProduct, setShowProduct] = useState<boolean>(false)
 
     useEffect(() => {
         ;(async function getShopProductData() {
@@ -131,32 +134,27 @@ export default function RootLayout() {
             <header>
                 <nav>
                     <h1>UBIQUITIOUS STORE</h1>
-                    <NavLink to={"/"}>Home</NavLink>
-                    <NavLink to={"/shop"}>Shop</NavLink>
-                    {/* check if checkout bag item amount should be displayed */}
-                    {counter ? (
-                        <div className={RootLayoutSCSS.shoppingBagContainer}>
-                            <div className={RootLayoutSCSS.ItemCountContainer}>
-                                <div className={RootLayoutSCSS.square}>
-                                    <div className={RootLayoutSCSS.itemCount}>
-                                        {counter > 99 ? "99+" : counter}
-                                    </div>
-                                </div>
-                                <div className={RootLayoutSCSS.triangle}></div>
-                            </div>
-                            <button
-                                onClick={() => {
-                                    setCheckout(!checkout)
-                                }}
-                            ></button>
-                        </div>
-                    ) : (
-                        <button
-                            onClick={() => {
-                                setCheckout(!checkout)
-                            }}
-                        ></button>
-                    )}
+                    <NavLink
+                        to={"/"}
+                        onClick={() => {
+                            setShowProduct(false)
+                        }}
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to={"/shop"}
+                        onClick={() => {
+                            setShowProduct(false)
+                        }}
+                    >
+                        Shop
+                    </NavLink>
+                    <BagIcon
+                        counter={counter}
+                        checkout={checkout}
+                        setCheckout={setCheckout}
+                    />
                 </nav>
             </header>
 
@@ -199,7 +197,15 @@ export default function RootLayout() {
                         <h2>{intToCurrency(totalCost)}</h2>
                     </div>
                     <Outlet
-                        context={{ shopProductData, addItemToBag, setCheckout }}
+                        context={{
+                            shopProductData,
+                            addItemToBag,
+                            setCheckout,
+                            showProduct,
+                            setShowProduct,
+                            counter,
+                            checkout,
+                        }}
                     />
                 </main>
             ) : (
@@ -211,7 +217,15 @@ export default function RootLayout() {
                         className={`${RootLayoutSCSS.showBag} ${RootLayoutSCSS.hideBag}`}
                     ></div>
                     <Outlet
-                        context={{ shopProductData, addItemToBag, setCheckout }}
+                        context={{
+                            shopProductData,
+                            addItemToBag,
+                            setCheckout,
+                            showProduct,
+                            setShowProduct,
+                            counter,
+                            checkout,
+                        }}
                     />
                 </main>
             )}

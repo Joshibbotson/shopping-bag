@@ -16,9 +16,6 @@
     width: 0;
     height: 0;
 }
-body {
-    width: 100%;
-}
 
 .showBag {
     display: flex;
@@ -35,7 +32,6 @@ body {
     z-index: 10;
     overflow-y: scroll;
     margin-right: 0;
-    transition: all 250ms;
 
     .productContainer {
         display: flex;
@@ -65,43 +61,32 @@ body {
 }
 
 .showBag.hideBag {
-    height: 50%;
+    height: 100%;
     opacity: 0;
-    top: 80vh;
-    margin-right: -50%;
+    top: 0;
     pointer-events: none;
 }
 
 @media (min-width: 570px) {
     .showBag {
-        transition: all 500ms;
         .productContainer {
-            width: 67.7777%;
+            width: 60.7777%;
         }
     }
 
     .showBag.hideBag {
-        margin-right: -50%;
         pointer-events: none;
     }
 }
+
 @media (min-width: 890px) {
     .showBag {
-        transition: all 500ms;
+        .productContainer {
+            width: 66.7777%;
+        }
     }
 
     .showBag.hideBag {
-        margin-right: -50%;
-        pointer-events: none;
-    }
-}
-@media (min-width: 1300px) {
-    .showBag {
-        transition: all 500ms;
-    }
-
-    .showBag.hideBag {
-        margin-right: -50%;
         pointer-events: none;
     }
 }

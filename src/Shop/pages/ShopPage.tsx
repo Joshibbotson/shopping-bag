@@ -3,7 +3,7 @@ import ItemListing from "../components/ItemListing"
 import shopSCSS from "../styles/Shop.module.scss"
 import ProductModalSCSS from "../styles/ProductModal.module.scss"
 import { Outlet, useOutletContext } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useEffect, useRef } from "react"
 
 interface Product {
     title: string
@@ -22,12 +22,25 @@ interface OutletContextType {
         id: number
     ) => void
     setCheckout: (arg0: boolean) => void
+    showProduct: boolean
+    setShowProduct: (arg0: boolean) => void
+    counter: number
+    checkout: boolean
 }
 
 export default function Shop() {
-    const [showProduct, setShowProduct] = useState<boolean>(false)
+    const currentYOffset = useRef<number>(0)
     const data: OutletContextType = useOutletContext()
-    const { shopProductData, addItemToBag, setCheckout } = data
+    const {
+        shopProductData,
+        addItemToBag,
+        setCheckout,
+        showProduct,
+        setShowProduct,
+        counter,
+        checkout,
+    } = data
+    console.log(counter + "hello")
 
     // adjust showProduct based on siteUrl//
     useEffect(() => {
@@ -45,9 +58,7 @@ export default function Shop() {
             }
         }
         const siteUrl = getSiteName(currentUrl)
-
         currentUrl === `http://${siteUrl}/shop` ? setShowProduct(false) : ""
-
         const checkForProductPage = (url: string | undefined) => {
             for (let i = 0; i < shopProductData!.length; i++) {
                 if (currentUrl === `http://${url}/shop/${i}`) {
@@ -59,6 +70,7 @@ export default function Shop() {
         shopProductData ? checkForProductPage(siteUrl) : ""
     }, [window.location.href, shopProductData])
 
+    //Ensures when a product page is displayed that the nav links are available to access and prevents scrolling//
     useEffect(() => {
         const body = document.querySelector("body")
 
@@ -66,15 +78,19 @@ export default function Shop() {
             body!.style.overflow = "hidden"
             window.scrollTo({
                 top: 0,
-                behavior: "auto", // This scrolls smoothly, but you can also use 'auto' to scroll instantly
             })
         } else {
             body!.style.overflow = "scroll"
         }
     }, [showProduct])
 
+    const storeUserYOffset = () => {
+        console.log(window.pageYOffset)
+    }
+
     return (
         <>
+            {/* Ensure json data has been fetched before trying to load item listings */}
             {shopProductData ? (
                 <>
                     <section>
@@ -106,6 +122,8 @@ export default function Shop() {
                                             addItemToBag,
                                             shopProductData,
                                             setCheckout,
+                                            counter,
+                                            checkout,
                                         }}
                                     />
                                 </div>

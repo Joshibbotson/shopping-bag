@@ -31,65 +31,8 @@ body {
                 text-decoration: none;
                 color: black;
                 font-weight: 600;
+                z-index: 14;
             }
-
-            .shoppingBagContainer {
-                display: flex;
-                align-items: flex-end;
-                justify-content: center;
-                gap: 0.2rem;
-                z-index: 12;
-                .ItemCountContainer {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    .square {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background-color: black;
-                        width: 1.6rem;
-                        height: 1.46rem;
-                        margin-bottom: 0.01rem;
-                        border-bottom-left-radius: 0.2rem;
-                        border-bottom-right-radius: 0.2rem;
-                        border-top-right-radius: 0.1rem;
-                        border-top-left-radius: 0.1rem;
-                        padding-left: 1rem;
-                        padding-right: 1rem;
-
-                        .itemCount {
-                            color: white;
-                            z-index: 10;
-                            font-size: 0.8rem;
-                            font-weight: 600;
-                        }
-                    }
-                    .triangle {
-                        width: 1rem;
-                        height: 1rem;
-                        transform: rotate(45deg);
-
-                        background-color: black;
-                        margin-left: -0.8rem;
-                        z-index: 9;
-                    }
-                }
-            }
-        }
-        button {
-            font-family: inherit;
-            background-image: url(./assets/bag.png);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 14;
-
-            width: 2rem;
-            height: 2rem;
-            border: none;
-            background-color: none;
         }
     }
     .backDrop {
@@ -127,7 +70,6 @@ body {
         overflow-y: scroll;
         margin-right: 0;
         transition: all 250ms;
-        border-left: 2px solid black;
 
         .closeBtn {
             display: flex;
@@ -177,7 +119,7 @@ body {
             }
         }
         .showBag {
-            width: 33.33333%;
+            width: 40.33333%;
         }
 
         .showBag.hideBag {
