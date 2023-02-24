@@ -1,5 +1,5 @@
 import shopSCSS from "../styles/Shop.module.scss"
-import { Link, Outlet, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import intToCurrency from "../../UtilFunctions/IntToCurrency"
 
 interface Props {
@@ -9,13 +9,6 @@ interface Props {
     id: number
     showProduct: boolean
     setShowProduct: (arg0: boolean) => void
-
-    // addItemToBag: (
-    //     title: string,
-    //     imageUrl: string,
-    //     price: number,
-    //     id: number
-    // ) => void
 }
 
 export default function itemListing({

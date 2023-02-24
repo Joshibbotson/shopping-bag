@@ -1,5 +1,6 @@
 import { Link, useOutletContext, useParams } from "react-router-dom"
-import productModal from "../styles/ProductModal.module.scss"
+import productModalSCSS from "../styles/ProductModal.module.scss"
+import { useEffect } from "react"
 
 interface Product {
     showProduct: boolean
@@ -11,6 +12,7 @@ interface Product {
         id: number
     ) => void
     shopProductData: Array<ShopProduct>
+    setCheckout: (arg0: boolean) => void
 }
 
 interface ShopProduct {
@@ -24,7 +26,13 @@ interface ShopProduct {
 export default function ProductPage() {
     const { productId } = useParams()
     const data: Product = useOutletContext()
-    const { showProduct, setShowProduct, addItemToBag, shopProductData } = data
+    const {
+        showProduct,
+        setShowProduct,
+        addItemToBag,
+        shopProductData,
+        setCheckout,
+    } = data
     const targetData: ShopProduct[] = shopProductData!.filter(item => {
         return item.id === parseInt(productId!)
     })
@@ -33,33 +41,35 @@ export default function ProductPage() {
     }
 
     return (
-        <>
-            <h1>{targetData[0].title}</h1>
-            <div
-                className={productModal.img}
-                style={backgroundImageStyle}
-            ></div>
-
-            <Link
-                to={"/shop"}
-                onClick={() => {
-                    setShowProduct(false)
-                }}
-            >
-                S H O P
-            </Link>
-            <button
-                onClick={() => {
-                    addItemToBag(
-                        targetData[0].title,
-                        targetData[0].image,
-                        targetData[0].price,
-                        targetData[0].id
-                    )
-                }}
-            >
-                add to bag
-            </button>
-        </>
+        <section className={productModalSCSS.productContainer}>
+            <div className={productModalSCSS.innerProductContainer}>
+                <h1>{targetData[0].title}</h1>
+                <div
+                    className={productModalSCSS.img}
+                    style={backgroundImageStyle}
+                ></div>
+                <Link
+                    to={"/shop"}
+                    onClick={() => {
+                        setShowProduct(false)
+                        setCheckout(false)
+                    }}
+                >
+                    S H O P
+                </Link>
+                <button
+                    onClick={() => {
+                        addItemToBag(
+                            targetData[0].title,
+                            targetData[0].image,
+                            targetData[0].price,
+                            targetData[0].id
+                        )
+                    }}
+                >
+                    add to bag
+                </button>
+            </div>
+        </section>
     )
 }

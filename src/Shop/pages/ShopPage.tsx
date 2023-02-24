@@ -21,14 +21,13 @@ interface OutletContextType {
         price: number,
         id: number
     ) => void
+    setCheckout: (arg0: boolean) => void
 }
 
 export default function Shop() {
     const [showProduct, setShowProduct] = useState<boolean>(false)
-
     const data: OutletContextType = useOutletContext()
-    const { shopProductData } = data
-    const { addItemToBag } = data
+    const { shopProductData, addItemToBag, setCheckout } = data
 
     // adjust showProduct based on siteUrl//
     useEffect(() => {
@@ -59,6 +58,20 @@ export default function Shop() {
 
         shopProductData ? checkForProductPage(siteUrl) : ""
     }, [window.location.href, shopProductData])
+
+    useEffect(() => {
+        const body = document.querySelector("body")
+
+        if (showProduct) {
+            body!.style.overflow = "hidden"
+            window.scrollTo({
+                top: 0,
+                behavior: "auto", // This scrolls smoothly, but you can also use 'auto' to scroll instantly
+            })
+        } else {
+            body!.style.overflow = "scroll"
+        }
+    }, [showProduct])
 
     return (
         <>
@@ -92,6 +105,7 @@ export default function Shop() {
                                             setShowProduct,
                                             addItemToBag,
                                             shopProductData,
+                                            setCheckout,
                                         }}
                                     />
                                 </div>

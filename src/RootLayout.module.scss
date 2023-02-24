@@ -38,6 +38,7 @@ body {
                 align-items: flex-end;
                 justify-content: center;
                 gap: 0.2rem;
+                z-index: 12;
                 .ItemCountContainer {
                     display: flex;
                     justify-content: center;
@@ -55,7 +56,6 @@ body {
                         border-bottom-right-radius: 0.2rem;
                         border-top-right-radius: 0.1rem;
                         border-top-left-radius: 0.1rem;
-                        z-index: 10;
                         padding-left: 1rem;
                         padding-right: 1rem;
 
@@ -84,6 +84,7 @@ body {
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+            z-index: 14;
 
             width: 2rem;
             height: 2rem;
@@ -122,10 +123,11 @@ body {
         width: 100%;
         height: 100%;
         background-color: #f8f5f2;
-        z-index: 10;
+        z-index: 14;
         overflow-y: scroll;
         margin-right: 0;
         transition: all 250ms;
+        border-left: 2px solid black;
 
         .closeBtn {
             display: flex;

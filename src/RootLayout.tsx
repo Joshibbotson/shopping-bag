@@ -198,7 +198,9 @@ export default function RootLayout() {
                         ))}
                         <h2>{intToCurrency(totalCost)}</h2>
                     </div>
-                    <Outlet context={{ shopProductData, addItemToBag }} />
+                    <Outlet
+                        context={{ shopProductData, addItemToBag, setCheckout }}
+                    />
                 </main>
             ) : (
                 <main>
@@ -208,7 +210,9 @@ export default function RootLayout() {
                     <div
                         className={`${RootLayoutSCSS.showBag} ${RootLayoutSCSS.hideBag}`}
                     ></div>
-                    <Outlet context={{ shopProductData, addItemToBag }} />
+                    <Outlet
+                        context={{ shopProductData, addItemToBag, setCheckout }}
+                    />
                 </main>
             )}
         </>
