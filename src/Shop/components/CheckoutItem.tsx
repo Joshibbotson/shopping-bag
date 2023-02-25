@@ -27,24 +27,31 @@ export default function CheckoutItem({
     }
     return (
         <div className={checkoutItemSCSS.checkoutItemContainer}>
-            <h1> {title} </h1>
-            <p>{intToCurrency(sumPrice)}</p>
-            <div className={checkoutItemSCSS.amountContainer}>
-                <button
-                    onClick={() => {
-                        decrementAmount(id)
-                    }}
-                >
-                    -
-                </button>
-                <h4>{amount}</h4>
-                <button
-                    onClick={() => {
-                        incrementAmount(id)
-                    }}
-                >
-                    +
-                </button>
+            <div
+                className={checkoutItemSCSS.checkoutImg}
+                style={backgroundImageStyle}
+            ></div>
+            <div className={checkoutItemSCSS.rightCheckoutContainer}>
+                <p>{intToCurrency(sumPrice)}</p>
+
+                <h3> {title} </h3>
+                <div className={checkoutItemSCSS.amountContainer}>
+                    <button
+                        onClick={() => {
+                            decrementAmount(id)
+                        }}
+                    >
+                        -
+                    </button>
+                    <h4>{amount}</h4>
+                    <button
+                        onClick={() => {
+                            incrementAmount(id)
+                        }}
+                    >
+                        +
+                    </button>
+                </div>
             </div>
         </div>
     )

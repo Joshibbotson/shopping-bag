@@ -87,15 +87,6 @@ export default function ProductPage() {
                     Add To Bag
                 </button>
                 <div className={productModalSCSS.linkContainer}>
-                    {/* <Link
-                        to={"/shop"}
-                        onClick={() => {
-                            setShowProduct(false)
-                            setCheckout(false)
-                        }}
-                    >
-                        Back To Shop
-                    </Link> */}
                     <BagIcon
                         counter={counter}
                         checkout={checkout}

@@ -70,23 +70,16 @@ export default function Shop() {
         shopProductData ? checkForProductPage(siteUrl) : ""
     }, [window.location.href, shopProductData])
 
-    //Ensures when a product page is displayed that the nav links are available to access and prevents scrolling//
+    //Ensures when an overlay is used that scroling is prevented//
     useEffect(() => {
         const body = document.querySelector("body")
 
-        if (showProduct) {
+        if (showProduct || checkout) {
             body!.style.overflow = "hidden"
-            window.scrollTo({
-                top: 0,
-            })
         } else {
             body!.style.overflow = "scroll"
         }
-    }, [showProduct])
-
-    const storeUserYOffset = () => {
-        console.log(window.pageYOffset)
-    }
+    }, [showProduct, checkout])
 
     return (
         <>
