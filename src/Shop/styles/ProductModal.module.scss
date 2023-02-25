@@ -44,7 +44,7 @@ $fontColour: rgb(96, 95, 95);
         width: 100%;
         height: 100%;
 
-        .exitLinkWrapper {
+        .exitLinkWrapperMobile {
             display: flex;
             justify-content: flex-end;
             align-items: flex-start;
@@ -92,8 +92,9 @@ $fontColour: rgb(96, 95, 95);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 1rem;
+        gap: 5rem;
         padding: 1rem;
+        margin-bottom: 1rem;
 
         .detailContainer {
             display: flex;
@@ -110,17 +111,46 @@ $fontColour: rgb(96, 95, 95);
                 color: $fontColour;
             }
         }
-
-        button {
+        .btnContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             width: 100%;
-            height: 2.5rem;
-            color: $fontColour;
-            background: none;
-            border: 1px solid $fontColour;
-            border-radius: 4px;
-            font-size: 1rem;
+
+            button {
+                width: 100%;
+                height: 2.5rem;
+                color: $fontColour;
+                background: none;
+                border: 1px solid $fontColour;
+                border-radius: 4px;
+                font-size: 1rem;
+            }
+
+            .exitLinkWrapperDesktop {
+                display: none;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 2.5rem;
+                color: $fontColour;
+                background: none;
+                border: 1px solid $fontColour;
+                border-radius: 4px;
+                font-size: 1rem;
+
+                a,
+                a:visited,
+                a:link {
+                    width: 100%;
+                    text-align: center;
+                    color: $fontColour;
+                    font-size: 1rem;
+                    text-decoration: none;
+                }
+            }
         }
-        .linkContainer {
+        .checkoutBag {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -152,6 +182,9 @@ $fontColour: rgb(96, 95, 95);
         flex-direction: row;
         .productContainer {
             width: 60.7777%;
+            .exitLinkWrapperMobile {
+                display: none;
+            }
 
             .innerProductContainer {
                 .img {
@@ -162,9 +195,12 @@ $fontColour: rgb(96, 95, 95);
             h1 {
             }
 
-            button {
+            .btnContainer {
+                .exitLinkWrapperDesktop {
+                    display: flex;
+                }
             }
-            .linkContainer {
+            button {
             }
         }
     }
@@ -192,7 +228,7 @@ $fontColour: rgb(96, 95, 95);
 
             button {
             }
-            .linkContainer {
+            .exitLinkWrapperMobile {
             }
         }
     }

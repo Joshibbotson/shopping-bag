@@ -150,6 +150,14 @@ export default function RootLayout() {
                     >
                         Shop
                     </NavLink>
+                    <NavLink
+                        to={"/aboutus"}
+                        onClick={() => {
+                            setShowProduct(false)
+                        }}
+                    >
+                        About Us
+                    </NavLink>
                     <BagIcon
                         counter={counter}
                         checkout={checkout}

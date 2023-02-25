@@ -51,7 +51,7 @@ export default function ProductPage() {
     return (
         <>
             <section className={productModalSCSS.productContainer}>
-                <div className={productModalSCSS.exitLinkWrapper}>
+                <div className={productModalSCSS.exitLinkWrapperMobile}>
                     <Link
                         to={"/shop"}
                         onClick={() => {
@@ -76,19 +76,33 @@ export default function ProductPage() {
                     <h4>{intToCurrency(targetData[0].price)}</h4>
                 </div>
 
-                <button
-                    onClick={() => {
-                        addItemToBag(
-                            targetData[0].title,
-                            targetData[0].image,
-                            targetData[0].price,
-                            targetData[0].id
-                        )
-                    }}
-                >
-                    Add To Bag
-                </button>
-                <div className={productModalSCSS.linkContainer}>
+                <div className={productModalSCSS.btnContainer}>
+                    <button
+                        onClick={() => {
+                            addItemToBag(
+                                targetData[0].title,
+                                targetData[0].image,
+                                targetData[0].price,
+                                targetData[0].id
+                            )
+                        }}
+                    >
+                        Add To Bag
+                    </button>
+                    <div className={productModalSCSS.exitLinkWrapperDesktop}>
+                        <Link
+                            to={"/shop"}
+                            onClick={() => {
+                                setShowProduct(false)
+                                setCheckout(false)
+                            }}
+                        >
+                            Back to Shop
+                        </Link>
+                    </div>
+                </div>
+
+                <div className={productModalSCSS.checkoutBag}>
                     <BagIcon
                         counter={counter}
                         checkout={checkout}
