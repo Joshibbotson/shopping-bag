@@ -71,8 +71,10 @@ export default function ProductPage() {
                 </div>
             </section>
             <section className={productModalSCSS.rightSection}>
-                <h1>{targetData[0].title}</h1>
-                <h1>{intToCurrency(targetData[0].price)}</h1>
+                <div className={productModalSCSS.detailContainer}>
+                    <h1>{targetData[0].title}</h1>
+                    <h4>{intToCurrency(targetData[0].price)}</h4>
+                </div>
 
                 <button
                     onClick={() => {

@@ -1,3 +1,5 @@
+$fontColour: rgb(96, 95, 95);
+
 .backDrop {
     background-color: rgba(0, 0, 0, 0.842);
     height: 100%;
@@ -16,23 +18,6 @@
     width: 0;
     height: 0;
 }
-.exitLinkWrapper {
-    display: flex;
-    justify-content: flex-end;
-    width: 95%;
-    margin-top: -1.5rem;
-
-    a:link,
-    a:visited {
-        text-decoration: none;
-        color: white;
-        padding: 0.5rem;
-        border-radius: 4px;
-        font-weight: 600;
-        z-index: 10;
-        font-size: 1.3rem;
-    }
-}
 
 .showBag {
     display: flex;
@@ -49,6 +34,7 @@
     z-index: 13;
     overflow-y: scroll;
     margin-right: 0;
+    transition: margin-left 500ms;
 
     .productContainer {
         display: flex;
@@ -57,16 +43,41 @@
         flex-direction: column;
         width: 100%;
         height: 100%;
-        background: linear-gradient(-90deg, #333, #eee);
+
+        .exitLinkWrapper {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 95%;
+            position: absolute;
+            top: 1rem;
+
+            a:link,
+            a:visited {
+                text-decoration: none;
+                color: $fontColour;
+                padding: 0.5rem;
+                border-radius: 4px;
+                font-weight: 600;
+                z-index: 10;
+                font-size: 1.3rem;
+            }
+            a:hover,
+            a:active {
+                color: red;
+            }
+        }
+
         .innerProductContainer {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 80%;
-            height: 80%;
+            width: 90%;
+            height: 20rem;
             background-color: white;
             border-radius: 10px;
+            margin-top: 5rem;
             .img {
                 width: 80%;
                 height: 80%;
@@ -84,17 +95,29 @@
         gap: 1rem;
         padding: 1rem;
 
-        h1 {
-            text-align: center;
+        .detailContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h1,
+            h4 {
+                width: 100%;
+                color: $fontColour;
+            }
         }
 
         button {
-            width: 60%;
+            width: 100%;
             height: 2.5rem;
-            color: white;
-            background-color: rgb(7, 137, 7);
+            color: $fontColour;
+            background: none;
+            border: 1px solid $fontColour;
             border-radius: 4px;
-            border: none;
             font-size: 1rem;
         }
         .linkContainer {
@@ -103,33 +126,74 @@
             align-items: center;
             gap: 2rem;
             padding: 1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
 }
 
 .showBag.hideBag {
-    height: 100%;
+    // height: 100%;
+    margin-left: -100%;
+
     opacity: 0;
     top: 0;
     pointer-events: none;
+    transition: opacity 2s, margin-left 500ms;
 }
 
 @media (min-width: 570px) {
-    .showBag {
-        .productContainer {
-            width: 60.7777%;
-        }
-    }
-
     .showBag.hideBag {
         pointer-events: none;
+    }
+
+    .showBag {
+        flex-direction: row;
+        .productContainer {
+            width: 60.7777%;
+
+            .innerProductContainer {
+                .img {
+                }
+            }
+        }
+        .rightSection {
+            h1 {
+            }
+
+            button {
+            }
+            .linkContainer {
+            }
+        }
     }
 }
 
 @media (min-width: 890px) {
+    .showBag.hideBag {
+        pointer-events: none;
+    }
+
     .showBag {
         .productContainer {
             width: 66.7777%;
+
+            .innerProductContainer {
+                width: 36rem;
+                height: 36rem;
+                .img {
+                }
+            }
+        }
+        .rightSection {
+            h1 {
+            }
+
+            button {
+            }
+            .linkContainer {
+            }
         }
     }
 

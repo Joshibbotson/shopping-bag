@@ -196,6 +196,14 @@ export default function RootLayout() {
                         ))}
 
                         <h2>Sub Total: {intToCurrency(totalCost)}</h2>
+                        <button
+                            className={RootLayoutSCSS.checkoutBtn}
+                            onClick={() => {
+                                alert("Thanks for visiting!")
+                            }}
+                        >
+                            Checkout
+                        </button>
                     </div>
                     <Outlet
                         context={{
