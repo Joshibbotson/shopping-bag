@@ -27,16 +27,20 @@ export default function CheckoutItem({
     }
     return (
         <div className={checkoutItemSCSS.checkoutItemContainer}>
-            <div
-                className={checkoutItemSCSS.checkoutImg}
-                style={backgroundImageStyle}
-            ></div>
+            <div className={checkoutItemSCSS.checkoutImgWrapper}>
+                <div
+                    className={checkoutItemSCSS.checkoutImg}
+                    style={backgroundImageStyle}
+                ></div>
+            </div>
+
             <div className={checkoutItemSCSS.rightCheckoutContainer}>
-                <p>{intToCurrency(sumPrice)}</p>
+                <h4>{intToCurrency(sumPrice)}</h4>
 
                 <h3> {title} </h3>
                 <div className={checkoutItemSCSS.amountContainer}>
                     <button
+                        className={checkoutItemSCSS.minus}
                         onClick={() => {
                             decrementAmount(id)
                         }}
@@ -45,6 +49,7 @@ export default function CheckoutItem({
                     </button>
                     <h4>{amount}</h4>
                     <button
+                        className={checkoutItemSCSS.plus}
                         onClick={() => {
                             incrementAmount(id)
                         }}

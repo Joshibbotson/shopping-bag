@@ -194,6 +194,7 @@ export default function RootLayout() {
                                 key={item.id}
                             />
                         ))}
+
                         <h2>Sub Total: {intToCurrency(totalCost)}</h2>
                     </div>
                     <Outlet
