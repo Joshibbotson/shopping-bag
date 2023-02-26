@@ -44,8 +44,15 @@ export default function Shop() {
     const [categorisedShopData, setCategorisedShopData] = useState<Record<
         string,
         any
-    > | null>(shopProductData)
+    > | null>(null)
     const categoryRef = useRef<string>("all")
+
+    //Ensure re-render of page when shop product data is fetched, so it's not stuck on Loading
+    useEffect(() => {
+        if (shopProductData) {
+            setCategorisedShopData(shopProductData)
+        }
+    }, [shopProductData])
 
     // adjust showProduct based on siteUrl//
     useEffect(() => {
