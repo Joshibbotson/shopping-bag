@@ -2,7 +2,7 @@ import Loading from "../../Loading/Loading"
 import ItemListing from "../components/ItemListing"
 import shopSCSS from "../styles/Shop.module.scss"
 import ProductModalSCSS from "../styles/ProductModal.module.scss"
-import { Outlet, useOutletContext } from "react-router-dom"
+import { Link, Outlet, useOutletContext } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
 
 interface Product {
@@ -45,6 +45,7 @@ export default function Shop() {
         string,
         any
     > | null>(shopProductData)
+    const categoryRef = useRef<string>("all")
 
     // adjust showProduct based on siteUrl//
     useEffect(() => {
@@ -91,118 +92,144 @@ export default function Shop() {
             {/* One thing to note is this is not necessarily a good method of category
             selection from a scalable point of view, as it requires fetching the 
             entire database for all categories on first load, thus would lead to a slower
-            initial load time */}
+            initial load time, but in this instance prevents excessive api calls */}
             {shopProductData && categorisedShopData ? (
                 <>
-                    {console.log(shopProductData)}
-
-                    <div className={shopSCSS.categoryBtnsContainer}>
-                        <button
-                            onClick={() => {
-                                setCategorisedShopData(
-                                    shopProductData.map((item: Product) => {
-                                        return item
-                                    })
-                                )
-                            }}
-                        >
-                            All
-                        </button>
-                        <button
-                            onClick={() => {
-                                setCategorisedShopData(
-                                    shopProductData.filter((item: Product) => {
-                                        return (
-                                            item.category === "men's clothing"
+                    <div className={shopSCSS.shopAndCategoryContainer}>
+                        <div className={shopSCSS.categoryBtnsContainer}>
+                            <Link
+                                to={"all"}
+                                onClick={() => {
+                                    setCategorisedShopData(
+                                        shopProductData.map((item: Product) => {
+                                            return item
+                                        })
+                                    )
+                                    categoryRef.current = "all"
+                                }}
+                            >
+                                All
+                            </Link>
+                            <Link
+                                to={"mens"}
+                                onClick={() => {
+                                    setCategorisedShopData(
+                                        shopProductData.filter(
+                                            (item: Product) => {
+                                                return (
+                                                    item.category ===
+                                                    "men's clothing"
+                                                )
+                                            }
                                         )
-                                    })
-                                )
-                            }}
-                        >
-                            Men's
-                        </button>
-                        <button
-                            onClick={() => {
-                                setCategorisedShopData(
-                                    shopProductData.filter((item: Product) => {
-                                        return (
-                                            item.category === "women's clothing"
+                                    )
+                                    categoryRef.current = "mens"
+                                }}
+                            >
+                                Men's
+                            </Link>
+                            <Link
+                                to={"womens"}
+                                onClick={() => {
+                                    setCategorisedShopData(
+                                        shopProductData.filter(
+                                            (item: Product) => {
+                                                return (
+                                                    item.category ===
+                                                    "women's clothing"
+                                                )
+                                            }
                                         )
-                                    })
-                                )
-                            }}
-                        >
-                            Women's
-                        </button>
-                        <button
-                            onClick={() => {
-                                setCategorisedShopData(
-                                    shopProductData.filter((item: Product) => {
-                                        return item.category === "jewelery"
-                                    })
-                                )
-                            }}
-                        >
-                            Jewellery
-                        </button>
-                        <button
-                            onClick={() => {
-                                setCategorisedShopData(
-                                    shopProductData.filter((item: Product) => {
-                                        return item.category === "electronics"
-                                    })
-                                )
-                            }}
-                        >
-                            Electronics
-                        </button>
-                    </div>
-                    <section className={shopSCSS.shopSection}>
-                        <div className={shopSCSS.gridLayout}>
-                            {categorisedShopData.map((item: Product) => {
-                                return (
-                                    <ItemListing
-                                        title={item.title}
-                                        imageUrl={item.image}
-                                        price={item.price}
-                                        key={item.id}
-                                        id={item.id}
-                                        showProduct={showProduct}
-                                        setShowProduct={setShowProduct}
-                                    />
-                                )
-                            })}
+                                    )
+                                    categoryRef.current = "womens"
+                                }}
+                            >
+                                Women's
+                            </Link>
+                            <Link
+                                to={"jewellery"}
+                                onClick={() => {
+                                    setCategorisedShopData(
+                                        shopProductData.filter(
+                                            (item: Product) => {
+                                                return (
+                                                    item.category === "jewelery"
+                                                )
+                                            }
+                                        )
+                                    )
+                                    categoryRef.current = "jewellery"
+                                }}
+                            >
+                                Jewellery
+                            </Link>
+                            <Link
+                                to={"electronics"}
+                                onClick={() => {
+                                    setCategorisedShopData(
+                                        shopProductData.filter(
+                                            (item: Product) => {
+                                                return (
+                                                    item.category ===
+                                                    "electronics"
+                                                )
+                                            }
+                                        )
+                                    )
+                                    categoryRef.current = "electronics"
+                                }}
+                            >
+                                Electronics
+                            </Link>
                         </div>
-                        {showProduct ? (
-                            <>
-                                <div
-                                    className={ProductModalSCSS.backDrop}
-                                ></div>
-                                <div className={ProductModalSCSS.showBag}>
-                                    <Outlet
-                                        context={{
-                                            showProduct,
-                                            setShowProduct,
-                                            addItemToBag,
-                                            shopProductData,
-                                            setCheckout,
-                                            counter,
-                                            checkout,
-                                        }}
-                                    />
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div
-                                    className={`${ProductModalSCSS.backDrop} ${ProductModalSCSS.hide}`}
-                                ></div>
-                                <div
-                                    className={`${ProductModalSCSS.showBag} ${ProductModalSCSS.hideBag}`}
-                                ></div>
-                            </>
-                        )}
-                    </section>
+                        <section className={shopSCSS.shopSection}>
+                            <div className={shopSCSS.gridLayout}>
+                                {categorisedShopData.map((item: Product) => {
+                                    return (
+                                        <ItemListing
+                                            title={item.title}
+                                            imageUrl={item.image}
+                                            price={item.price}
+                                            key={item.id}
+                                            id={item.id}
+                                            showProduct={showProduct}
+                                            setShowProduct={setShowProduct}
+                                        />
+                                    )
+                                })}
+                            </div>
+                            {showProduct ? (
+                                <>
+                                    <div
+                                        className={ProductModalSCSS.backDrop}
+                                    ></div>
+                                    <div className={ProductModalSCSS.showBag}>
+                                        <Outlet
+                                            context={{
+                                                showProduct,
+                                                setShowProduct,
+                                                addItemToBag,
+                                                shopProductData,
+                                                setCheckout,
+                                                counter,
+                                                checkout,
+                                                categoryRef,
+                                            }}
+                                        />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div
+                                        className={`${ProductModalSCSS.backDrop} ${ProductModalSCSS.hide}`}
+                                    ></div>
+                                    <div
+                                        className={`${ProductModalSCSS.showBag} ${ProductModalSCSS.hideBag}`}
+                                    ></div>
+                                </>
+                            )}
+                        </section>
+                    </div>
                 </>
             ) : (
                 <Loading />

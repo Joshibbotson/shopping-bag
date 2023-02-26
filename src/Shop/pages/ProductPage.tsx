@@ -17,6 +17,7 @@ interface Product {
     setCheckout: (arg0: boolean) => void
     counter: number
     checkout: boolean
+    categoryRef: any
 }
 
 interface ShopProduct {
@@ -38,6 +39,7 @@ export default function ProductPage() {
         setCheckout,
         counter,
         checkout,
+        categoryRef,
     } = data
 
     const targetData: ShopProduct[] = shopProductData!.filter(item => {
@@ -52,7 +54,7 @@ export default function ProductPage() {
             <section className={productModalSCSS.productContainer}>
                 <div className={productModalSCSS.exitLinkWrapperMobile}>
                     <Link
-                        to={"/shop"}
+                        to={`/shop/${categoryRef.current}`}
                         onClick={() => {
                             setShowProduct(false)
                             setCheckout(false)
@@ -73,6 +75,8 @@ export default function ProductPage() {
                 <div className={productModalSCSS.detailContainer}>
                     <h1>{targetData[0].title}</h1>
                     <h4>{intToCurrency(targetData[0].price)}</h4>
+                    <hr />
+                    <p>{targetData[0].description}</p>
                 </div>
 
                 <div className={productModalSCSS.btnContainer}>
@@ -90,7 +94,7 @@ export default function ProductPage() {
                     </button>
                     <div className={productModalSCSS.exitLinkWrapperDesktop}>
                         <Link
-                            to={"/shop"}
+                            to={`/shop/${categoryRef.current}`}
                             onClick={() => {
                                 setShowProduct(false)
                                 setCheckout(false)
