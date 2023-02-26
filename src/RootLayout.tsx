@@ -23,7 +23,7 @@ export default function RootLayout() {
         ;(async function getShopProductData() {
             try {
                 const result = await fetch(
-                    "https://fakestoreapi.com/products?limit=12",
+                    "https://fakestoreapi.com/products?limit=16",
                     { mode: "cors" }
                 )
                 const json = await result.json()
@@ -134,35 +134,37 @@ export default function RootLayout() {
             <header>
                 <nav>
                     <h1>UBIQUITIOUS STORE</h1>
-                    <NavLink
-                        to={"/"}
-                        onClick={() => {
-                            setShowProduct(false)
-                        }}
-                    >
-                        Home
-                    </NavLink>
-                    <NavLink
-                        to={"/shop"}
-                        onClick={() => {
-                            setShowProduct(false)
-                        }}
-                    >
-                        Shop
-                    </NavLink>
-                    <NavLink
-                        to={"/aboutus"}
-                        onClick={() => {
-                            setShowProduct(false)
-                        }}
-                    >
-                        About Us
-                    </NavLink>
-                    <BagIcon
-                        counter={counter}
-                        checkout={checkout}
-                        setCheckout={setCheckout}
-                    />
+                    <div className={RootLayoutSCSS.linkContainer}>
+                        <NavLink
+                            to={"/"}
+                            onClick={() => {
+                                setShowProduct(false)
+                            }}
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink
+                            to={"/shop"}
+                            onClick={() => {
+                                setShowProduct(false)
+                            }}
+                        >
+                            Shop
+                        </NavLink>
+                        <NavLink
+                            to={"/aboutus"}
+                            onClick={() => {
+                                setShowProduct(false)
+                            }}
+                        >
+                            About Us
+                        </NavLink>
+                        <BagIcon
+                            counter={counter}
+                            checkout={checkout}
+                            setCheckout={setCheckout}
+                        />
+                    </div>
                 </nav>
             </header>
 

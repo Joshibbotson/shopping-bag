@@ -3,7 +3,7 @@ import ItemListing from "../components/ItemListing"
 import shopSCSS from "../styles/Shop.module.scss"
 import ProductModalSCSS from "../styles/ProductModal.module.scss"
 import { Outlet, useOutletContext } from "react-router-dom"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface Product {
     title: string
@@ -11,6 +11,8 @@ interface Product {
     price: number
     sumPrice: number
     id: number
+    category: string
+    description: string
 }
 
 interface OutletContextType {
@@ -29,7 +31,6 @@ interface OutletContextType {
 }
 
 export default function Shop() {
-    const currentYOffset = useRef<number>(0)
     const data: OutletContextType = useOutletContext()
     const {
         shopProductData,
@@ -40,7 +41,10 @@ export default function Shop() {
         counter,
         checkout,
     } = data
-    console.log(counter + "hello")
+    const [categorisedShopData, setCategorisedShopData] = useState<Record<
+        string,
+        any
+    > | null>(shopProductData)
 
     // adjust showProduct based on siteUrl//
     useEffect(() => {
@@ -70,7 +74,7 @@ export default function Shop() {
         shopProductData ? checkForProductPage(siteUrl) : ""
     }, [window.location.href, shopProductData])
 
-    //Ensures when an overlay is used that scroling is prevented//
+    //Ensures when an overlay is used that scrolling is prevented//
     useEffect(() => {
         const body = document.querySelector("body")
 
@@ -84,11 +88,78 @@ export default function Shop() {
     return (
         <>
             {/* Ensure json data has been fetched before trying to load item listings */}
-            {shopProductData ? (
+            {/* One thing to note is this is not necessarily a good method of category
+            selection from a scalable point of view, as it requires fetching the 
+            entire database for all categories on first load, thus would lead to a slower
+            initial load time */}
+            {shopProductData && categorisedShopData ? (
                 <>
+                    {console.log(shopProductData)}
+
+                    <div className={shopSCSS.categoryBtnsContainer}>
+                        <button
+                            onClick={() => {
+                                setCategorisedShopData(
+                                    shopProductData.map((item: Product) => {
+                                        return item
+                                    })
+                                )
+                            }}
+                        >
+                            All
+                        </button>
+                        <button
+                            onClick={() => {
+                                setCategorisedShopData(
+                                    shopProductData.filter((item: Product) => {
+                                        return (
+                                            item.category === "men's clothing"
+                                        )
+                                    })
+                                )
+                            }}
+                        >
+                            Men's
+                        </button>
+                        <button
+                            onClick={() => {
+                                setCategorisedShopData(
+                                    shopProductData.filter((item: Product) => {
+                                        return (
+                                            item.category === "women's clothing"
+                                        )
+                                    })
+                                )
+                            }}
+                        >
+                            Women's
+                        </button>
+                        <button
+                            onClick={() => {
+                                setCategorisedShopData(
+                                    shopProductData.filter((item: Product) => {
+                                        return item.category === "jewelery"
+                                    })
+                                )
+                            }}
+                        >
+                            Jewellery
+                        </button>
+                        <button
+                            onClick={() => {
+                                setCategorisedShopData(
+                                    shopProductData.filter((item: Product) => {
+                                        return item.category === "electronics"
+                                    })
+                                )
+                            }}
+                        >
+                            Electronics
+                        </button>
+                    </div>
                     <section className={shopSCSS.shopSection}>
                         <div className={shopSCSS.gridLayout}>
-                            {shopProductData.map((item: Product) => {
+                            {categorisedShopData.map((item: Product) => {
                                 return (
                                     <ItemListing
                                         title={item.title}

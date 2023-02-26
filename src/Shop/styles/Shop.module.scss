@@ -3,6 +3,23 @@ $font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
 $fontColour: rgb(96, 95, 95);
 
 $borderColour: rgb(233, 233, 233);
+.categoryBtnsContainer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    button {
+        border: none;
+        border-right: 1px solid black;
+        width: 6rem;
+        height: 1.75rem;
+    }
+    button:hover {
+        background-color: black;
+        color: white;
+    }
+}
 .shopSection {
     display: flex;
     justify-content: center;

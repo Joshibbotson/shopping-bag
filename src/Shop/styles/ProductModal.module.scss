@@ -93,7 +93,7 @@ $fontColour: rgb(96, 95, 95);
         align-items: center;
         justify-content: center;
         gap: 5rem;
-        padding: 1rem;
+        padding: 2rem;
         margin-bottom: 1rem;
 
         .detailContainer {
@@ -192,6 +192,8 @@ $fontColour: rgb(96, 95, 95);
             }
         }
         .rightSection {
+            width: 33.3333%;
+
             h1 {
             }
 
@@ -214,6 +216,7 @@ $fontColour: rgb(96, 95, 95);
     .showBag {
         .productContainer {
             width: 66.7777%;
+            padding: 5rem;
 
             .innerProductContainer {
                 width: 36rem;
@@ -223,6 +226,8 @@ $fontColour: rgb(96, 95, 95);
             }
         }
         .rightSection {
+            padding: 5rem;
+
             h1 {
             }
 

@@ -40,7 +40,6 @@ export default function ProductPage() {
         checkout,
     } = data
 
-    console.log(counter)
     const targetData: ShopProduct[] = shopProductData!.filter(item => {
         return item.id === parseInt(productId!)
     })
