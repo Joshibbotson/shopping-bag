@@ -45,9 +45,9 @@ main {
 
         .gridLayout {
             display: grid;
-            grid-template-columns: repeat(1, 20rem);
-            gap: 4rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(2, 8rem);
+            gap: 2rem;
+            margin-top: 2rem;
 
             .itemListing {
                 display: flex;
@@ -63,8 +63,8 @@ main {
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;
-                    height: 10rem;
-                    width: 10rem;
+                    height: 7rem;
+                    width: 7rem;
                     margin-bottom: 2rem;
                 }
 
@@ -79,8 +79,9 @@ main {
                     justify-content: center;
                     align-items: center;
                     gap: 0.5rem;
+                    // width: 5rem;
                     h1 {
-                        font-size: 1.1rem;
+                        font-size: 0.6rem;
                         text-align: center;
                         color: $fontColour;
                     }
@@ -128,9 +129,60 @@ main {
 
             .gridLayout {
                 display: grid;
-                grid-template-columns: repeat(1, 15rem);
+                grid-template-columns: repeat(2, 15rem);
                 gap: 2rem;
                 margin-top: 4rem;
+
+                .itemListing {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid rgb(233, 233, 233);
+                    border-radius: 0.625rem;
+                    background-color: white;
+                    padding: 1rem;
+
+                    .img {
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        height: 10rem;
+                        width: 10rem;
+                        margin-bottom: 2rem;
+                    }
+
+                    hr {
+                        width: 100%;
+                        border: 1px solid $borderColour;
+                    }
+
+                    .bottomContainer {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.5rem;
+                        h1 {
+                            font-size: 1.1rem;
+                            text-align: center;
+                            color: $fontColour;
+                        }
+                        h5 {
+                            color: $fontColour;
+                        }
+
+                        button {
+                            width: 100%;
+                            font-family: $font;
+                            font-weight: 800;
+                            background-color: black;
+                            color: white;
+                            border: none;
+                            height: 2rem;
+                        }
+                    }
+                }
             }
         }
     }
