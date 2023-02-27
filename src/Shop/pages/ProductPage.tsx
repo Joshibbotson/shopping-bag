@@ -2,6 +2,7 @@ import { Link, useOutletContext, useParams } from "react-router-dom"
 import productModalSCSS from "../styles/ProductModal.module.scss"
 import intToCurrency from "../../UtilFunctions/IntToCurrency"
 import BagIcon from "../components/BagIcon"
+import AddToBagModal from "../components/AddToBagModal"
 
 interface Product {
     showProduct: boolean
