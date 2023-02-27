@@ -1,13 +1,29 @@
 .homeMain {
-    .homeSection {
-        background-image: url(../../assets/homeBg.jpg);
-        background-size: cover;
-        background-position: 50%;
+    background-image: url(../../assets/homeBg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100svh;
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+@media (min-width: 768px) {
+    .homeMain {
         min-height: 100svh;
-        padding: 160px 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
+    }
+}
+
+@media (min-width: 890px) {
+    .homeMain {
+        min-height: 100svh;
+    }
+}
+
+@media (min-width: 1445px) {
+    .homeMain {
+        min-height: 100svh;
     }
 }

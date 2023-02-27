@@ -20,6 +20,7 @@ body {
             align-items: center;
             margin-top: 1rem;
             margin-bottom: 1rem;
+            z-index: 10;
 
             h1 {
                 font-size: 1.5rem;
@@ -164,7 +165,7 @@ body {
     body {
         header {
             nav {
-                width: 53rem;
+                width: 90%;
 
                 h1 {
                     font-size: 2rem;
@@ -184,11 +185,11 @@ body {
     }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1445px) {
     body {
         header {
             nav {
-                width: 71.5rem;
+                width: 85rem;
 
                 h1 {
                     font-size: 2rem;
