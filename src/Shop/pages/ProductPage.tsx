@@ -1,7 +1,6 @@
 import { Link, useOutletContext, useParams } from "react-router-dom"
 import productModalSCSS from "../styles/ProductModal.module.scss"
 import intToCurrency from "../../UtilFunctions/IntToCurrency"
-
 import BagIcon from "../components/BagIcon"
 
 interface Product {
@@ -28,6 +27,7 @@ interface ShopProduct {
     description: string
     category: string
 }
+
 export default function ProductPage() {
     const { productId } = useParams()
     const data: Product = useOutletContext()
@@ -100,7 +100,7 @@ export default function ProductPage() {
                                 setCheckout(false)
                             }}
                         >
-                            Back to Shop
+                            {"< Back to Shop"}
                         </Link>
                     </div>
                 </div>

@@ -104,6 +104,7 @@ export default function Shop() {
                 <>
                     <div className={shopSCSS.shopAndCategoryContainer}>
                         <div className={shopSCSS.categoryBtnsContainer}>
+                            <h1>{categoryRef.current}</h1>
                             <Link
                                 to={"all"}
                                 onClick={() => {
@@ -133,7 +134,7 @@ export default function Shop() {
                                     categoryRef.current = "mens"
                                 }}
                             >
-                                Men's
+                                Men
                             </Link>
                             <Link
                                 to={"womens"}
@@ -151,7 +152,7 @@ export default function Shop() {
                                     categoryRef.current = "womens"
                                 }}
                             >
-                                Women's
+                                Women
                             </Link>
                             <Link
                                 to={"jewellery"}
