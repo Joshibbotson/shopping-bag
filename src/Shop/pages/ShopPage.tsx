@@ -104,7 +104,7 @@ export default function Shop() {
                 <>
                     <div className={shopSCSS.shopAndCategoryContainer}>
                         <div className={shopSCSS.categoryBtnsContainer}>
-                            <h1>{categoryRef.current}</h1>
+                            {/* <h1>{categoryRef.current}</h1> */}
                             <Link
                                 to={"all"}
                                 onClick={() => {
