@@ -133,7 +133,7 @@ export default function RootLayout() {
         <>
             <header>
                 <nav>
-                    <h1>UBIQUITIOUS STORE</h1>
+                    <h1>UBIQUITOUS STORE</h1>
                     <div className={RootLayoutSCSS.linkContainer}>
                         <NavLink
                             to={"/"}

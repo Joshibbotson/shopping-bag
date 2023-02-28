@@ -165,9 +165,7 @@ $fontColour: rgb(96, 95, 95);
 }
 
 .showBag.hideBag {
-    // height: 100%;
     margin-left: -100%;
-
     opacity: 0;
     top: 0;
     pointer-events: none;
