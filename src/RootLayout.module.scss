@@ -125,6 +125,24 @@ body {
             overflow-y: scroll;
             height: 100%;
         }
+
+        .emptyBagContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            .emptyBagImg {
+                background-image: url(./assets/bag.png);
+                filter: opacity(0.1);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+
         .checkoutBtn {
             width: 80%;
             padding: 0.5rem;

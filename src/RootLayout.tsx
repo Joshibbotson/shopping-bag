@@ -191,21 +191,34 @@ export default function RootLayout() {
                                 MY SHOPPING BAG
                             </h2>
                         </div>
-                        <div className={RootLayoutSCSS.checkoutItemsContainer}>
-                            {bagContents.map(item => (
-                                <CheckoutItem
-                                    title={item.title}
-                                    price={item.price}
-                                    amount={item.amount}
-                                    sumPrice={item.sumPrice}
-                                    imageUrl={item.imageUrl}
-                                    id={item.id}
-                                    decrementAmount={decrementAmount}
-                                    incrementAmount={incrementAmount}
-                                    key={item.id}
-                                />
-                            ))}
-                        </div>
+                        {bagContents.length > 0 ? (
+                            <div
+                                className={
+                                    RootLayoutSCSS.checkoutItemsContainer
+                                }
+                            >
+                                {bagContents.map(item => (
+                                    <CheckoutItem
+                                        title={item.title}
+                                        price={item.price}
+                                        amount={item.amount}
+                                        sumPrice={item.sumPrice}
+                                        imageUrl={item.imageUrl}
+                                        id={item.id}
+                                        decrementAmount={decrementAmount}
+                                        incrementAmount={incrementAmount}
+                                        key={item.id}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className={RootLayoutSCSS.emptyBagContainer}>
+                                <div
+                                    className={RootLayoutSCSS.emptyBagImg}
+                                ></div>
+                            </div>
+                        )}
+
                         <h2>Sub Total: {intToCurrency(totalCost)}</h2>
                         <button
                             className={RootLayoutSCSS.checkoutBtn}
