@@ -1,3 +1,7 @@
 export default function AboutUs() {
-    return <>About Us</>
+    return (
+        <>
+            <p>Under construction</p>
+        </>
+    )
 }

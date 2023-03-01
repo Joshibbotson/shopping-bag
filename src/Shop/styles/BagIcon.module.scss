@@ -4,6 +4,7 @@
     justify-content: center;
     gap: 0.2rem;
     z-index: 12;
+
     .ItemCountContainer {
         display: flex;
         justify-content: center;
@@ -48,4 +49,5 @@ img {
     width: 1.585rem;
     border: none;
     background-color: none;
+    cursor: pointer;
 }

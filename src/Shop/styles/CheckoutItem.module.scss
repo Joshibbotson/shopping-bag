@@ -56,6 +56,10 @@
                 background-color: rgb(225, 224, 224);
                 border-radius: 50%;
                 color: black;
+                cursor: pointer;
+            }
+            button:active {
+                transform: (scale(0.9));
             }
         }
     }

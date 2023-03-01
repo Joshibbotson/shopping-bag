@@ -1,4 +1,5 @@
 $fontColour: rgb(96, 95, 95);
+$hoverColour: rgb(141, 141, 141);
 
 .backDrop {
     background-color: rgba(0, 0, 0, 0.842);
@@ -34,7 +35,7 @@ $fontColour: rgb(96, 95, 95);
     z-index: 13;
     overflow-y: scroll;
     margin-right: 0;
-    transition: margin-left 500ms;
+    transition: margin-left 250ms;
 
     .productContainer {
         display: flex;
@@ -85,6 +86,11 @@ $fontColour: rgb(96, 95, 95);
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
+                transition: transform 1s;
+            }
+            // temporary fix, to be replaced with better zoom.
+            .img:hover {
+                transform: scale(1.2);
             }
         }
     }
@@ -126,6 +132,16 @@ $fontColour: rgb(96, 95, 95);
                 border: 1px solid $fontColour;
                 border-radius: 4px;
                 font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 250ms, transform 250ms;
+            }
+            button:hover {
+                background-color: $hoverColour;
+                color: white;
+            }
+            button:active {
+                background-color: green;
+                transform: scale((0.9));
             }
 
             .exitLinkWrapperDesktop {
@@ -139,16 +155,26 @@ $fontColour: rgb(96, 95, 95);
                 border: 1px solid $fontColour;
                 border-radius: 4px;
                 font-size: 1rem;
+                cursor: pointer;
 
                 a,
                 a:visited,
                 a:link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     width: 100%;
                     text-align: center;
-                    color: $fontColour;
+                    color: inherit;
                     font-size: 1rem;
                     text-decoration: none;
+                    height: 100%;
                 }
+            }
+
+            .exitLinkWrapperDesktop:hover {
+                background-color: $hoverColour;
+                color: white;
             }
         }
         .checkoutBag {
@@ -169,7 +195,7 @@ $fontColour: rgb(96, 95, 95);
     opacity: 0;
     top: 0;
     pointer-events: none;
-    transition: opacity 2s, margin-left 500ms;
+    transition: opacity 2s, margin-left 250ms;
 }
 
 @media (min-width: 570px) {

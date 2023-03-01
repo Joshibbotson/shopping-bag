@@ -152,6 +152,12 @@ main {
                         width: 10rem;
                         margin-bottom: 2rem;
                     }
+                    a {
+                        transition: transform 250ms;
+                    }
+                    a:hover {
+                        transform: scale(1.1);
+                    }
 
                     hr {
                         width: 100%;

@@ -102,6 +102,7 @@ body {
             position: absolute;
             top: 1rem;
             right: 1rem;
+            cursor: pointer;
         }
 
         .closeBtn:hover {
@@ -129,6 +130,11 @@ body {
             border: none;
             font-size: 1rem;
             font-weight: 800;
+            cursor: pointer;
+        }
+
+        .checkoutBtn:hover {
+            background-color: rgb(4, 154, 4);
         }
     }
 
@@ -177,7 +183,7 @@ body {
         }
         .showBag {
             width: 33.33333%;
-            transition: all 500ms;
+            transition: all 250ms;
         }
 
         .showBag.hideBag {
@@ -201,7 +207,7 @@ body {
         }
         .showBag {
             width: 33.33333%;
-            transition: all 500ms;
+            transition: all 250ms;
         }
 
         .showBag.hideBag {
