@@ -191,20 +191,21 @@ export default function RootLayout() {
                                 MY SHOPPING BAG
                             </h2>
                         </div>
-                        {bagContents.map(item => (
-                            <CheckoutItem
-                                title={item.title}
-                                price={item.price}
-                                amount={item.amount}
-                                sumPrice={item.sumPrice}
-                                imageUrl={item.imageUrl}
-                                id={item.id}
-                                decrementAmount={decrementAmount}
-                                incrementAmount={incrementAmount}
-                                key={item.id}
-                            />
-                        ))}
-
+                        <div className={RootLayoutSCSS.checkoutItemsContainer}>
+                            {bagContents.map(item => (
+                                <CheckoutItem
+                                    title={item.title}
+                                    price={item.price}
+                                    amount={item.amount}
+                                    sumPrice={item.sumPrice}
+                                    imageUrl={item.imageUrl}
+                                    id={item.id}
+                                    decrementAmount={decrementAmount}
+                                    incrementAmount={incrementAmount}
+                                    key={item.id}
+                                />
+                            ))}
+                        </div>
                         <h2>Sub Total: {intToCurrency(totalCost)}</h2>
                         <button
                             className={RootLayoutSCSS.checkoutBtn}
