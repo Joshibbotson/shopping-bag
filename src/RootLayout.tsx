@@ -186,48 +186,59 @@ export default function RootLayout() {
                         >
                             X
                         </button>
-                        <div className={RootLayoutSCSS.bagTitleWrapper}>
-                            <h2 className={RootLayoutSCSS.bagTitle}>
-                                MY SHOPPING BAG
-                            </h2>
-                        </div>
-                        {bagContents.length > 0 ? (
-                            <div
-                                className={
-                                    RootLayoutSCSS.checkoutItemsContainer
-                                }
-                            >
-                                {bagContents.map(item => (
-                                    <CheckoutItem
-                                        title={item.title}
-                                        price={item.price}
-                                        amount={item.amount}
-                                        sumPrice={item.sumPrice}
-                                        imageUrl={item.imageUrl}
-                                        id={item.id}
-                                        decrementAmount={decrementAmount}
-                                        incrementAmount={incrementAmount}
-                                        key={item.id}
-                                    />
-                                ))}
-                            </div>
-                        ) : (
-                            <div className={RootLayoutSCSS.emptyBagContainer}>
-                                <div
-                                    className={RootLayoutSCSS.emptyBagImg}
-                                ></div>
-                            </div>
-                        )}
 
-                        <h2>Sub Total: {intToCurrency(totalCost)}</h2>
-                        <button
-                            className={RootLayoutSCSS.checkoutBtn}
-                            onClick={() => {
-                                alert("Thanks for visiting!")
-                            }}
-                        >
-                            Checkout
-                        </button>
+                        {bagContents.length > 0 ? (
+                            <>
+                                <div className={RootLayoutSCSS.bagTitleWrapper}>
+                                    <h2 className={RootLayoutSCSS.bagTitle}>
+                                        MY SHOPPING BAG
+                                    </h2>
+                                </div>
+                                <div
+                                    className={
+                                        RootLayoutSCSS.checkoutItemsContainer
+                                    }
+                                >
+                                    {bagContents.map(item => (
+                                        <CheckoutItem
+                                            title={item.title}
+                                            price={item.price}
+                                            amount={item.amount}
+                                            sumPrice={item.sumPrice}
+                                            imageUrl={item.imageUrl}
+                                            id={item.id}
+                                            decrementAmount={decrementAmount}
+                                            incrementAmount={incrementAmount}
+                                            key={item.id}
+                                        />
+                                    ))}
+                                </div>
+                                <h2>Sub Total: {intToCurrency(totalCost)}</h2>
+                                <button
+                                    className={RootLayoutSCSS.checkoutBtn}
+                                    onClick={() => {
+                                        alert("Thanks for visiting!")
+                                    }}
+                                >
+                                    Checkout
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <div className={RootLayoutSCSS.bagTitleWrapper}>
+                                    <h2 className={RootLayoutSCSS.bagTitle}>
+                                        YOUR BAG IS EMPTY
+                                    </h2>
+                                </div>
+                                <div
+                                    className={RootLayoutSCSS.emptyBagContainer}
+                                >
+                                    <div
+                                        className={RootLayoutSCSS.emptyBagImg}
+                                    ></div>
+                                </div>
+                            </>
+                        )}
                     </div>
                     <Outlet
                         context={{

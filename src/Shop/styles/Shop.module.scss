@@ -30,6 +30,9 @@ main {
             color: $fontColour;
             font-family: $font;
         }
+        a:last-child {
+            border: none;
+        }
         a:hover {
             background-color: black;
             color: white;
@@ -79,12 +82,41 @@ main {
                     justify-content: center;
                     align-items: center;
                     gap: 0.5rem;
-                    // width: 5rem;
+                    height: 5rem;
+                    overflow: hidden;
+
                     h1 {
-                        font-size: 0.6rem;
-                        text-align: center;
+                        font-size: 1rem;
+                        position: relative;
+                        text-align: left;
                         color: $fontColour;
+                        width: 10ch;
+                        height: 3rem;
+                        overflow: hidden;
+                        transition: all 250ms;
                     }
+                    h1:after {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        height: 100%;
+                        width: 100%;
+                        content: "";
+                        background: linear-gradient(
+                            to top,
+                            rgba(255, 255, 255, 1) 20%,
+                            rgba(255, 255, 255, 0) 50%
+                        );
+                        pointer-events: none;
+                    }
+                    h1:hover {
+                        margin-top: 2rem;
+                        min-height: 5rem;
+                        overflow-y: scroll;
+                        padding-bottom: 2rem;
+                    }
+
                     h5 {
                         color: $fontColour;
                     }
@@ -172,7 +204,8 @@ main {
                         gap: 0.5rem;
                         h1 {
                             font-size: 1.1rem;
-                            text-align: center;
+                            text-align: left;
+                            // width: 100%;
                             color: $fontColour;
                         }
                         h5 {
@@ -187,6 +220,57 @@ main {
                             color: white;
                             border: none;
                             height: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 638px) {
+    .shopAndCategoryContainer {
+        .categoryBtnsContainer {
+        }
+        .shopSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: $font;
+
+            .gridLayout {
+                display: grid;
+                grid-template-columns: repeat(3, 33%);
+                padding: 0.5rem;
+                gap: 0.5rem;
+                margin-top: 4rem;
+
+                .itemListing {
+                    .bottomContainer {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.5rem;
+                        h1 {
+                            font-size: 1rem;
+                            text-align: left;
+                            width: auto;
+                            color: $fontColour;
+                            width: 14ch;
+                            height: 100%;
+                            transition: all 250ms;
+                        }
+                        h1:after {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            bottom: 0;
+                            height: 100%;
+                            width: 100%;
+                            content: "";
+                            background: none;
+                            pointer-events: none;
                         }
                     }
                 }
@@ -213,9 +297,12 @@ main {
             a,
             a:link,
             a:visited {
-                font-size: 1.75rem;
+                display: flex;
+                justify-content: flex-start;
+                font-size: 1.5rem;
                 width: 10rem;
                 padding: 1.6rem;
+                border: none;
             }
         }
         .shopSection {
