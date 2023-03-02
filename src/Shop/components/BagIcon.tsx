@@ -25,6 +25,7 @@ export default function BagIcon({ counter, checkout, setCheckout }: Props) {
                 onClick={() => {
                     setCheckout(!checkout)
                 }}
+                alt="checkout bag icon"
             ></img>
         </div>
     ) : (
@@ -34,6 +35,7 @@ export default function BagIcon({ counter, checkout, setCheckout }: Props) {
                 onClick={() => {
                     setCheckout(!checkout)
                 }}
+                alt="checkout bag icon"
             ></img>
         </div>
     )
