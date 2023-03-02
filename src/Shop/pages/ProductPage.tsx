@@ -104,14 +104,13 @@ export default function ProductPage() {
                             {"< Back to Shop"}
                         </Link>
                     </div>
-                </div>
-
-                <div className={productModalSCSS.checkoutBag}>
-                    <BagIcon
-                        counter={counter}
-                        checkout={checkout}
-                        setCheckout={setCheckout}
-                    />
+                    <div className={productModalSCSS.checkoutBag}>
+                        <BagIcon
+                            counter={counter}
+                            checkout={checkout}
+                            setCheckout={setCheckout}
+                        />
+                    </div>
                 </div>
             </section>
         </>

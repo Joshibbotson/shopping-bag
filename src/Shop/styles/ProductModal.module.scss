@@ -177,16 +177,6 @@ $hoverColour: rgb(141, 141, 141);
                 color: white;
             }
         }
-        .checkoutBag {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            padding: 1rem;
-            position: absolute;
-            top: 0;
-            left: 1rem;
-        }
     }
 }
 
@@ -231,8 +221,6 @@ $hoverColour: rgb(141, 141, 141);
             }
         }
     }
-    .checkoutBag {
-    }
 }
 
 @media (min-width: 890px) {
@@ -261,6 +249,9 @@ $hoverColour: rgb(141, 141, 141);
             button {
             }
             .exitLinkWrapperMobile {
+            }
+
+            .btnContainer {
             }
         }
     }
