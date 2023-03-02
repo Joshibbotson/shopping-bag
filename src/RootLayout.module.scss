@@ -32,6 +32,10 @@ body {
                 width: 100%;
                 color: $fontColour;
             }
+            a:has(h1) {
+                text-decoration: none;
+                padding-left: 0.3rem;
+            }
             .linkContainer {
                 display: flex;
                 justify-content: center;
@@ -46,6 +50,12 @@ body {
                     width: max-content;
                     font-size: 1rem;
                 }
+            }
+            a {
+                transition: letter-spacing 500ms;
+            }
+            a:hover {
+                letter-spacing: 6px;
             }
         }
     }
@@ -196,6 +206,10 @@ body {
 
                 h1 {
                     font-size: 1rem;
+                    margin-right: auto;
+                }
+                a:has(h1) {
+                    text-decoration: none;
                     margin-right: auto;
                 }
             }

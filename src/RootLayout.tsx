@@ -133,16 +133,10 @@ export default function RootLayout() {
         <>
             <header>
                 <nav>
-                    <h1>UBIQUITOUS STORE</h1>
+                    <NavLink to={"/"}>
+                        <h1>UBIQUITOUS STORE</h1>
+                    </NavLink>
                     <div className={RootLayoutSCSS.linkContainer}>
-                        <NavLink
-                            to={"/"}
-                            onClick={() => {
-                                setShowProduct(false)
-                            }}
-                        >
-                            Home
-                        </NavLink>
                         <NavLink
                             to={"/shop"}
                             onClick={() => {
