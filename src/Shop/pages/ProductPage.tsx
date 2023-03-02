@@ -3,6 +3,7 @@ import productModalSCSS from "../styles/ProductModal.module.scss"
 import intToCurrency from "../../UtilFunctions/IntToCurrency"
 import BagIcon from "../components/BagIcon"
 import AddToBagModal from "../components/AddToBagModal"
+import useSwipe from "../../UtilFunctions/useSwipe"
 
 interface Product {
     showProduct: boolean
@@ -49,10 +50,17 @@ export default function ProductPage() {
     const backgroundImageStyle = {
         backgroundImage: `url(${targetData[0].image})`,
     }
+    const swipeHandlers = useSwipe({
+        onSwipedLeft: () => setShowProduct(!showProduct),
+        onSwipedRight: () => "",
+    })
 
     return (
         <>
-            <section className={productModalSCSS.productContainer}>
+            <section
+                className={productModalSCSS.productContainer}
+                {...swipeHandlers}
+            >
                 <div className={productModalSCSS.exitLinkWrapperMobile}>
                     <Link
                         to={`/shop/${categoryRef.current}`}
@@ -65,14 +73,20 @@ export default function ProductPage() {
                     </Link>
                 </div>
 
-                <div className={productModalSCSS.innerProductContainer}>
+                <div
+                    className={productModalSCSS.innerProductContainer}
+                    {...swipeHandlers}
+                >
                     <div
                         className={productModalSCSS.img}
                         style={backgroundImageStyle}
                     ></div>
                 </div>
             </section>
-            <section className={productModalSCSS.rightSection}>
+            <section
+                className={productModalSCSS.rightSection}
+                {...swipeHandlers}
+            >
                 <div className={productModalSCSS.detailContainer}>
                     <h1>{targetData[0].title}</h1>
                     <h4>{intToCurrency(targetData[0].price)}</h4>

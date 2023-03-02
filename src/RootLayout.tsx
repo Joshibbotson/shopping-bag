@@ -1,9 +1,10 @@
 import { NavLink, Outlet, useOutletContext } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
 import CheckoutItem from "./Shop/components/CheckoutItem"
 import intToCurrency from "./UtilFunctions/IntToCurrency"
 import BagIcon from "./Shop/components/BagIcon"
+import useSwipe from "./UtilFunctions/useSwipe"
 
 type ShopProductDataType = Record<string, any> | null
 
@@ -129,6 +130,11 @@ export default function RootLayout() {
         }
     }
 
+    const swipeHandlers = useSwipe({
+        onSwipedLeft: () => "",
+        onSwipedRight: () => setCheckout(!checkout),
+    })
+
     return (
         <>
             <header>
@@ -144,14 +150,6 @@ export default function RootLayout() {
                             }}
                         >
                             Shop
-                        </NavLink>
-                        <NavLink
-                            to={"/aboutus"}
-                            onClick={() => {
-                                setShowProduct(false)
-                            }}
-                        >
-                            About Us
                         </NavLink>
                         <BagIcon
                             counter={counter}
@@ -171,7 +169,7 @@ export default function RootLayout() {
                             setCheckout(!checkout)
                         }}
                     ></div>
-                    <div className={RootLayoutSCSS.showBag}>
+                    <div className={RootLayoutSCSS.showBag} {...swipeHandlers}>
                         <button
                             onClick={() => {
                                 setCheckout(!checkout)
@@ -180,7 +178,7 @@ export default function RootLayout() {
                         >
                             X
                         </button>
-
+                        {/* Check for empty bag UI */}
                         {bagContents.length > 0 ? (
                             <>
                                 <div className={RootLayoutSCSS.bagTitleWrapper}>

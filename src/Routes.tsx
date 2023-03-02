@@ -1,6 +1,5 @@
 import Home from "./Home/HomePage"
 import Shop from "./Shop/pages/ShopPage"
-import AboutUs from "./AboutUs/AboutUs"
 import RootLayout from "./RootLayout"
 import NotFound from "./NotFound/NotFound"
 
@@ -24,7 +23,6 @@ export const router = createBrowserRouter(
                     <Route path="electronics" element={<Shop />}></Route>
                     <Route path=":productId" element={<ProductPage />} />
                 </Route>
-                <Route path="aboutUs" element={<AboutUs />} />
             </Route>
             <Route path="*" errorElement element={<NotFound />} />
         </Route>
