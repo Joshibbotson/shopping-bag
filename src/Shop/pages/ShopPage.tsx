@@ -93,6 +93,32 @@ export default function Shop() {
         }
     }, [showProduct, checkout])
 
+    // on click styling for shop category buttons//
+    function handleStylingOnClick(e: any) {
+        console.log(e.target.id)
+        const btnsArr = ["all", "men", "women", "jewellery", "electronics"]
+
+        const targetBtnId = btnsArr.filter(btn => {
+            return btn === e.target.id
+        })
+
+        const remainingBtnsId = btnsArr.filter(btn => {
+            return btn !== e.target.id
+        })
+
+        if (targetBtnId[0] !== null) {
+            const targetBtn = document.getElementById(targetBtnId[0])
+            targetBtn!.style.backgroundColor = "rgb(96, 95, 95)"
+            targetBtn!.style.color = "white"
+
+            remainingBtnsId.forEach(btnId => {
+                const btnToReset = document.getElementById(btnId) as HTMLElement
+                btnToReset.style.removeProperty("background-color")
+                btnToReset.style.removeProperty("color")
+            })
+        }
+    }
+
     return (
         <>
             {/* Ensure json data has been fetched before trying to load item listings */}
@@ -106,20 +132,23 @@ export default function Shop() {
                         <div className={shopSCSS.categoryBtnsContainer}>
                             <Link
                                 to={"all"}
-                                onClick={() => {
+                                id={"all"}
+                                onClick={e => {
                                     setCategorisedShopData(
                                         shopProductData.map((item: Product) => {
                                             return item
                                         })
                                     )
                                     categoryRef.current = "all"
+                                    handleStylingOnClick(e)
                                 }}
                             >
                                 All
                             </Link>
                             <Link
                                 to={"mens"}
-                                onClick={() => {
+                                id={"men"}
+                                onClick={e => {
                                     setCategorisedShopData(
                                         shopProductData.filter(
                                             (item: Product) => {
@@ -131,13 +160,15 @@ export default function Shop() {
                                         )
                                     )
                                     categoryRef.current = "mens"
+                                    handleStylingOnClick(e)
                                 }}
                             >
                                 Men
                             </Link>
                             <Link
                                 to={"womens"}
-                                onClick={() => {
+                                id={"women"}
+                                onClick={e => {
                                     setCategorisedShopData(
                                         shopProductData.filter(
                                             (item: Product) => {
@@ -149,13 +180,15 @@ export default function Shop() {
                                         )
                                     )
                                     categoryRef.current = "womens"
+                                    handleStylingOnClick(e)
                                 }}
                             >
                                 Women
                             </Link>
                             <Link
                                 to={"jewellery"}
-                                onClick={() => {
+                                id={"jewellery"}
+                                onClick={e => {
                                     setCategorisedShopData(
                                         shopProductData.filter(
                                             (item: Product) => {
@@ -166,13 +199,15 @@ export default function Shop() {
                                         )
                                     )
                                     categoryRef.current = "jewellery"
+                                    handleStylingOnClick(e)
                                 }}
                             >
                                 Jewellery
                             </Link>
                             <Link
                                 to={"electronics"}
-                                onClick={() => {
+                                id={"electronics"}
+                                onClick={e => {
                                     setCategorisedShopData(
                                         shopProductData.filter(
                                             (item: Product) => {
@@ -184,6 +219,7 @@ export default function Shop() {
                                         )
                                     )
                                     categoryRef.current = "electronics"
+                                    handleStylingOnClick(e)
                                 }}
                             >
                                 Electronics
