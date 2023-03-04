@@ -123,6 +123,44 @@ main {
     }
 }
 
+@media (min-width: 638px) {
+    .shopAndCategoryContainer {
+        .categoryBtnsContainer {
+        }
+        .shopSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: $font;
+
+            .gridLayout {
+                display: grid;
+                grid-template-columns: repeat(3, 33%);
+                padding: 0.5rem;
+                gap: 0.5rem;
+                margin-top: 4rem;
+
+                .itemListing {
+                    .bottomContainer {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.5rem;
+                        h1 {
+                            font-size: 1rem;
+                            text-align: left;
+                            width: auto;
+                            color: $fontColour;
+                            width: 14ch;
+                            transition: all 250ms;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 @media (min-width: 768px) {
     main {
         display: flex;
@@ -214,46 +252,7 @@ main {
     }
 }
 
-@media (min-width: 638px) {
-    .shopAndCategoryContainer {
-        .categoryBtnsContainer {
-        }
-        .shopSection {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: $font;
-
-            .gridLayout {
-                display: grid;
-                grid-template-columns: repeat(3, 33%);
-                padding: 0.5rem;
-                gap: 0.5rem;
-                margin-top: 4rem;
-
-                .itemListing {
-                    .bottomContainer {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 0.5rem;
-                        h1 {
-                            font-size: 1rem;
-                            text-align: left;
-                            width: auto;
-                            color: $fontColour;
-                            width: 14ch;
-                            transition: all 250ms;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 890px) {
+@media (min-width: 1100px) {
     .shopAndCategoryContainer {
         flex-direction: row;
         justify-content: center;
@@ -287,7 +286,7 @@ main {
 
             .gridLayout {
                 display: grid;
-                grid-template-columns: repeat(3, 33.3333%);
+                grid-template-columns: repeat(3, 15rem);
                 padding: 0.5rem;
                 gap: 0.5rem;
                 margin-top: 4rem;
