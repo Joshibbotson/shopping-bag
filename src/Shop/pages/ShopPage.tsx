@@ -95,7 +95,6 @@ export default function Shop() {
 
     // on click styling for shop category buttons//
     function handleStylingOnClick(e: any) {
-        console.log(e.target.id)
         const btnsArr = ["all", "men", "women", "jewellery", "electronics"]
 
         const targetBtnId = btnsArr.filter(btn => {
