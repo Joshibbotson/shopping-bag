@@ -1,5 +1,6 @@
 import checkoutItemSCSS from "../styles/CheckoutItem.module.scss"
 import intToCurrency from "../../UtilFunctions/IntToCurrency"
+import vatConversion from "../../UtilFunctions/vat"
 
 interface Props {
     title: string
@@ -35,7 +36,10 @@ export default function CheckoutItem({
             </div>
 
             <div className={checkoutItemSCSS.rightCheckoutContainer}>
-                <h4>{intToCurrency(sumPrice)}</h4>
+                <h4>{intToCurrency(sumPrice + vatConversion(sumPrice))}</h4>
+
+                <h5>Gross amount: {intToCurrency(sumPrice)}</h5>
+                <h6>VAT (20%): {intToCurrency(vatConversion(sumPrice))}</h6>
 
                 <h3> {title} </h3>
                 <div className={checkoutItemSCSS.amountContainer}>

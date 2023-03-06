@@ -5,6 +5,7 @@ import CheckoutItem from "./Shop/components/CheckoutItem"
 import intToCurrency from "./UtilFunctions/IntToCurrency"
 import BagIcon from "./Shop/components/BagIcon"
 import useSwipe from "./UtilFunctions/useSwipe"
+import vatConversion from "./UtilFunctions/vat"
 
 type ShopProductDataType = Record<string, any> | null
 
@@ -205,7 +206,12 @@ export default function RootLayout() {
                                         />
                                     ))}
                                 </div>
-                                <h2>Sub Total: {intToCurrency(totalCost)}</h2>
+                                <h2>
+                                    Sub Total:{" "}
+                                    {intToCurrency(
+                                        totalCost + vatConversion(totalCost)
+                                    )}
+                                </h2>
                                 <button
                                     className={RootLayoutSCSS.checkoutBtn}
                                     onClick={() => {

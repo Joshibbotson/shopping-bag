@@ -117,6 +117,7 @@ export default function Shop() {
             })
         }
     }
+    console.log(shopProductData)
 
     return (
         <>

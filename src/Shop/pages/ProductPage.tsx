@@ -2,7 +2,7 @@ import { Link, useOutletContext, useParams } from "react-router-dom"
 import productModalSCSS from "../styles/ProductModal.module.scss"
 import intToCurrency from "../../UtilFunctions/IntToCurrency"
 import BagIcon from "../components/BagIcon"
-import AddToBagModal from "../components/AddToBagModal"
+
 import useSwipe from "../../UtilFunctions/useSwipe"
 
 interface Product {
@@ -47,6 +47,7 @@ export default function ProductPage() {
     const targetData: ShopProduct[] = shopProductData!.filter(item => {
         return item.id === parseInt(productId!)
     })
+
     const backgroundImageStyle = {
         backgroundImage: `url(${targetData[0].image})`,
     }
