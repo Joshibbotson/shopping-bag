@@ -4,13 +4,14 @@ import RootLayout from "./RootLayout"
 import NotFound from "./NotFound/NotFound"
 
 import {
-    createBrowserRouter,
+    createHashRouter,
     createRoutesFromElements,
     Route,
 } from "react-router-dom"
 import ProductPage from "./Shop/pages/ProductPage"
 
-export const router = createBrowserRouter(
+//Utilising Hash router for simplicity in this project but note it is not best practice.//
+export const router = createHashRouter(
     createRoutesFromElements(
         <Route>
             <Route path="/" element={<RootLayout />}>

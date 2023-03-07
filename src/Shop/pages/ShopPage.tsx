@@ -70,10 +70,10 @@ export default function Shop() {
             }
         }
         const siteUrl = getSiteName(currentUrl)
-        currentUrl === `http://${siteUrl}/shop` ? setShowProduct(false) : ""
+        currentUrl === `http://${siteUrl}/#/shop` ? setShowProduct(false) : ""
         const checkForProductPage = (url: string | undefined) => {
             for (let i = 0; i < shopProductData!.length; i++) {
-                if (currentUrl === `http://${url}/shop/${i}`) {
+                if (currentUrl === `http://${url}/#/shop/${i}`) {
                     setShowProduct(true)
                 }
             }
