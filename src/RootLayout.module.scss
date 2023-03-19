@@ -26,7 +26,6 @@ body {
 
             h1 {
                 font-size: 1.5rem;
-                width: min-content;
                 padding-left: 0.3rem;
                 border-left: 3px solid $fontColour;
                 width: 100%;
@@ -41,6 +40,7 @@ body {
                 justify-content: center;
                 align-items: flex-end;
                 gap: 2rem;
+                margin-left: auto;
                 a,
                 a:link,
                 a:visited {
@@ -53,6 +53,7 @@ body {
             }
             a {
                 transition: letter-spacing 500ms;
+                text-decoration: none;
             }
             a:hover {
                 letter-spacing: 6px;

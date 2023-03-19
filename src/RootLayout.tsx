@@ -1,5 +1,5 @@
-import { NavLink, Outlet, useOutletContext } from "react-router-dom"
-import { useEffect, useState, useRef } from "react"
+import { NavLink, Outlet } from "react-router-dom"
+import { useEffect, useState } from "react"
 import RootLayoutSCSS from "./RootLayout.module.scss"
 import CheckoutItem from "./Shop/components/CheckoutItem"
 import intToCurrency from "./UtilFunctions/IntToCurrency"
@@ -77,7 +77,7 @@ export default function RootLayout() {
             })
         )
         //delete checkout item if amount of 0//
-        bagContents.map(item => {
+        bagContents.forEach(item => {
             if (item.id === id) {
                 if (item.amount === 0) {
                     deleteCheckoutItem(id)
