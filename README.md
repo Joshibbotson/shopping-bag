@@ -1,4 +1,5 @@
 this an ecommerce site, that utilises the API <a href="https://fakestoreapi.com/docs" target="_blank">FakeStore</a> for it's product data.
+live demo: https://shop-ji.netlify.app/
 
 Frameworks/Libraries used:
 
@@ -7,7 +8,6 @@ Frameworks/Libraries used:
 -   React Router
 -   SCSS
 
-live demo: https://shop-ji.netlify.app/
 <img width="452" alt="Screenshot 2023-04-26 at 07 25 13" src="https://user-images.githubusercontent.com/95958816/234487588-ae288d55-e941-4a29-9e04-0663970e791e.png">
 <img width="480" alt="Screenshot 2023-04-26 at 07 25 24" src="https://user-images.githubusercontent.com/95958816/234487625-be69e2c2-761e-4ef1-99be-8c498e1fa3db.png">
 <img width="478" alt="Screenshot 2023-04-26 at 07 25 54" src="https://user-images.githubusercontent.com/95958816/234487737-d74aff7a-b4e7-4b3c-bb6a-7386916021fb.png">
